@@ -8,7 +8,6 @@ description: >-
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - API
   - Gaming
   - League of Legends
 url: >-
@@ -26,8 +25,7 @@ apis:
       data and to arm the community with more ways to contribute to the player
       experience.
     humanURL: https://developer.riotgames.com/
-    tags:
-      - API
+    tags: []
     properties:
       - type: Documentation
         url: https://developer.riotgames.com/
