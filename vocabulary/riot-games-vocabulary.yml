@@ -1,0 +1,149 @@
+name: Riot Games Vocabulary
+description: >-
+  Vocabulary and taxonomy for Riot Games developer APIs covering
+  League of Legends, VALORANT, Teamfight Tactics, and Legends of Runeterra.
+version: '1.0'
+created: '2026-05-02'
+modified: '2026-05-02'
+terms:
+  - term: PUUID
+    definition: >-
+      Persistent Unique User ID - a globally unique, encrypted identifier
+      for a Riot Games account. Used across all game APIs for consistent
+      player identification.
+    synonyms: [player UUID, encrypted PUUID]
+    relatedTerms: [Riot ID, summoner ID, account]
+
+  - term: Riot ID
+    definition: >-
+      The new universal account identifier format consisting of a gameName
+      and tagLine (e.g., "CoolPlayer#NA1"). Replaces Summoner Name.
+    synonyms: [game name, tag line]
+    relatedTerms: [PUUID, summoner, account]
+
+  - term: Summoner
+    definition: >-
+      A League of Legends player account profile. Contains the summoner
+      name (deprecated), level, profile icon, and encrypted identifiers.
+      Being replaced by Riot ID system.
+    synonyms: [player, account]
+    relatedTerms: [PUUID, Riot ID, summoner level]
+
+  - term: Summoner Name
+    definition: >-
+      The legacy display name for a League of Legends player. Deprecated
+      in favor of the Riot ID (gameName + tagLine) system.
+    synonyms: [legacy name]
+    relatedTerms: [Riot ID, summoner]
+
+  - term: Champion
+    definition: >-
+      A playable character in League of Legends or Teamfight Tactics with
+      unique abilities, stats, and lore. Identified by championId (integer)
+      and championName.
+    synonyms: [character, hero]
+    relatedTerms: [champion mastery, champion rotation, Data Dragon]
+
+  - term: Champion Mastery
+    definition: >-
+      A measure of a summoner's skill and experience with a specific champion,
+      tracked in mastery points and mastery level (1-7+).
+    synonyms: [mastery points, champion experience]
+    relatedTerms: [champion, summoner]
+
+  - term: Match
+    definition: >-
+      A single completed game instance with metadata, participant data,
+      and outcome. Identified by matchId (e.g., NA1_4567890).
+    synonyms: [game, replay]
+    relatedTerms: [match history, participant, queue]
+
+  - term: Queue
+    definition: >-
+      A game mode queue type that determines matchmaking rules and ranking.
+      Examples: Ranked Solo/Duo (420), Normal Draft (400), ARAM (450).
+    synonyms: [game mode, queue type]
+    relatedTerms: [match, ranked, tier]
+
+  - term: Tier
+    definition: >-
+      A ranked division level in the League of Legends ranking system:
+      Iron, Bronze, Silver, Gold, Platinum, Emerald, Diamond, Master,
+      Grandmaster, Challenger.
+    synonyms: [rank, elo]
+    relatedTerms: [division, league points, ranked]
+
+  - term: Division
+    definition: >-
+      A subdivision within a ranked tier (I, II, III, IV). Combined with
+      tier to define a summoner's rank (e.g., Gold II).
+    relatedTerms: [tier, league points, ranked]
+
+  - term: League Points
+    definition: >-
+      Points earned or lost in ranked matches that track progression
+      within a division. Abbreviated as LP.
+    synonyms: [LP]
+    relatedTerms: [tier, division, ranked]
+
+  - term: Data Dragon
+    definition: >-
+      Riot Games' static data delivery service providing game assets such
+      as champion data, item data, summoner spells, and profile icons.
+      Updated with each game patch.
+    synonyms: [ddragon, static data CDN]
+    relatedTerms: [champion, item, patch version]
+
+  - term: RSO
+    definition: >-
+      Riot Sign-On - the OAuth 2.0 based authentication system for
+      Riot Games player account access. Required for production APIs
+      that access player-specific data.
+    synonyms: [Riot Sign-On, OAuth]
+    relatedTerms: [API key, authentication, PUUID]
+
+  - term: API Key
+    definition: >-
+      A credential used to authenticate requests to the Riot Games API.
+      Development keys have lower rate limits; production keys require
+      approval and have higher limits.
+    synonyms: [development key, production key, X-Riot-Token]
+    relatedTerms: [RSO, rate limit, authentication]
+
+  - term: Rate Limit
+    definition: >-
+      Restrictions on the number of API requests allowed per time window.
+      Riot Games enforces per-second and per-2-minute limits based on
+      key type and endpoint.
+    relatedTerms: [API key, production key]
+
+  - term: Spectator
+    definition: >-
+      Live game data API that provides real-time information about active
+      matches including participants, champions, and game state.
+    synonyms: [live game, observer]
+    relatedTerms: [match, live data]
+
+  - term: Clash
+    definition: >-
+      A competitive tournament format within League of Legends that allows
+      teams to compete in structured bracket tournaments.
+    synonyms: [tournament, team competition]
+    relatedTerms: [team, player, tournament code]
+
+  - term: Tournament Code
+    definition: >-
+      A code that creates a custom game lobby with preset settings,
+      used by developers to build tournament products using the
+      Tournament API.
+    relatedTerms: [Clash, tournament, custom game]
+
+categories:
+  - name: Player Identity
+    terms: [PUUID, Riot ID, Summoner, Summoner Name, RSO, API Key]
+  - name: Gameplay
+    terms: [Champion, Champion Mastery, Match, Queue, Spectator, Clash, Tournament Code]
+  - name: Ranking
+    terms: [Tier, Division, League Points]
+  - name: Infrastructure
+    terms: [Data Dragon, Rate Limit]

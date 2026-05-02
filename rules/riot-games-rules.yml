@@ -1,0 +1,84 @@
+rules:
+  riot-operation-summary-title-case:
+    description: All operation summaries must use Title Case
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete].summary"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^([A-Z][a-zA-Z]* )*[A-Z][a-zA-Z]*$"
+
+  riot-operation-id-camel-case:
+    description: Operation IDs should be camelCase
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete].operationId"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]*$"
+
+  riot-tags-title-case:
+    description: Tags must use Title Case
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete].tags[*]"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z][a-zA-Z0-9 ]*$"
+
+  riot-must-have-api-key-security:
+    description: All operations must require X-Riot-Token API key
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete]"
+    then:
+      field: security
+      function: defined
+
+  riot-responses-must-include-200:
+    description: GET operations must return a 200 response
+    severity: error
+    given: "$.paths[*].get"
+    then:
+      field: responses.200
+      function: defined
+
+  riot-must-have-403-response:
+    description: Operations must include 403 Forbidden response for API key errors
+    severity: warn
+    given: "$.paths[*][get,post,put,patch,delete].responses"
+    then:
+      field: "403"
+      function: defined
+
+  riot-must-have-404-response:
+    description: Operations must include 404 Not Found response for resource lookups
+    severity: warn
+    given: "$.paths[*].get.responses"
+    then:
+      field: "404"
+      function: defined
+
+  riot-path-parameters-required:
+    description: Path parameters must be marked as required
+    severity: error
+    given: "$.paths[*][get,post,put,patch,delete].parameters[?(@.in == 'path')]"
+    then:
+      field: required
+      function: truthy
+
+  riot-servers-must-be-https:
+    description: All servers must use HTTPS
+    severity: error
+    given: "$.servers[*].url"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^https://"
+
+  riot-encrypted-ids-in-descriptions:
+    description: Operations using encrypted IDs should document encryption in description
+    severity: info
+    given: "$.paths[*][get,post,put,patch,delete].parameters[?(@.name =~ /encrypted/i)]"
+    then:
+      field: description
+      function: defined

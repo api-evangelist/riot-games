@@ -1,0 +1,63 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "riot": "https://developer.riotgames.com/vocab#",
+    "lol": "https://developer.riotgames.com/vocab/lol#",
+
+    "Summoner": "riot:Summoner",
+    "Match": "riot:Match",
+    "LeagueEntry": "riot:LeagueEntry",
+    "ChampionMastery": "riot:ChampionMastery",
+    "Champion": "riot:Champion",
+    "LiveGame": "riot:LiveGame",
+
+    "puuid": "riot:puuid",
+    "summonerId": "riot:summonerId",
+    "summonerName": "riot:summonerName",
+    "summonerLevel": "riot:summonerLevel",
+    "profileIconId": "riot:profileIconId",
+    "accountId": "riot:accountId",
+
+    "matchId": "riot:matchId",
+    "gameMode": "riot:gameMode",
+    "gameType": "riot:gameType",
+    "gameDuration": "riot:gameDuration",
+    "queueId": "riot:queueId",
+    "mapId": "riot:mapId",
+    "platformId": "riot:platformId",
+    "gameVersion": "riot:gameVersion",
+    "participants": "riot:participants",
+
+    "tier": "riot:tier",
+    "rank": "riot:rank",
+    "leaguePoints": "riot:leaguePoints",
+    "queueType": "riot:queueType",
+    "wins": "riot:wins",
+    "losses": "riot:losses",
+    "hotStreak": "riot:hotStreak",
+    "veteran": "riot:veteran",
+
+    "championId": "riot:championId",
+    "championName": "riot:championName",
+    "championLevel": "riot:championLevel",
+    "championPoints": "riot:championPoints",
+
+    "kills": "riot:kills",
+    "deaths": "riot:deaths",
+    "assists": "riot:assists",
+    "goldEarned": "riot:goldEarned",
+    "totalDamageDealt": "riot:totalDamageDealt",
+    "win": "riot:win",
+    "teamId": "riot:teamId",
+    "teamPosition": "riot:teamPosition",
+
+    "gameName": "riot:gameName",
+    "tagLine": "riot:tagLine",
+
+    "name": "schema:name",
+    "description": "schema:description",
+    "url": "schema:url",
+    "identifier": "schema:identifier",
+    "dateCreated": "schema:dateCreated"
+  }
+}

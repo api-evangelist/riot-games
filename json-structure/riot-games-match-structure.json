@@ -1,0 +1,55 @@
+{
+  "name": "Riot Games Match",
+  "description": "Structure of a League of Legends match record from the Match v5 API",
+  "fields": [
+    {
+      "name": "metadata",
+      "type": "object",
+      "description": "Match metadata",
+      "fields": [
+        {"name": "dataVersion", "type": "string", "description": "Data version"},
+        {"name": "matchId", "type": "string", "description": "Unique match ID (e.g., NA1_4567890)", "required": true},
+        {"name": "participants", "type": "array", "items": "string", "description": "PUUIDs of all 10 participants"}
+      ]
+    },
+    {
+      "name": "info",
+      "type": "object",
+      "description": "Match information and participant data",
+      "fields": [
+        {"name": "gameCreation", "type": "integer", "description": "Unix ms timestamp when game was created"},
+        {"name": "gameDuration", "type": "integer", "description": "Duration in seconds"},
+        {"name": "gameId", "type": "integer", "description": "Numeric game ID"},
+        {"name": "gameMode", "type": "string", "description": "Game mode (CLASSIC, ARAM, etc.)"},
+        {"name": "gameName", "type": "string"},
+        {"name": "gameType", "type": "string", "description": "MATCHED_GAME or CUSTOM_GAME"},
+        {"name": "gameVersion", "type": "string", "description": "Patch version"},
+        {"name": "mapId", "type": "integer", "description": "Map identifier"},
+        {"name": "platformId", "type": "string", "description": "Region (NA1, EUW1, etc.)"},
+        {"name": "queueId", "type": "integer", "description": "Queue type ID"},
+        {
+          "name": "participants",
+          "type": "array",
+          "description": "All 10 player records",
+          "items": {
+            "type": "object",
+            "fields": [
+              {"name": "puuid", "type": "string"},
+              {"name": "summonerName", "type": "string"},
+              {"name": "championId", "type": "integer"},
+              {"name": "championName", "type": "string"},
+              {"name": "kills", "type": "integer"},
+              {"name": "deaths", "type": "integer"},
+              {"name": "assists", "type": "integer"},
+              {"name": "totalDamageDealt", "type": "integer"},
+              {"name": "goldEarned", "type": "integer"},
+              {"name": "win", "type": "boolean"},
+              {"name": "teamId", "type": "integer", "description": "100 (blue) or 200 (red)"},
+              {"name": "teamPosition", "type": "string", "description": "TOP, JUNGLE, MIDDLE, BOTTOM, UTILITY"}
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}

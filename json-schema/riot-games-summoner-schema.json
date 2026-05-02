@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/api-evangelist/riot-games/blob/main/json-schema/riot-games-summoner-schema.json",
+  "title": "Riot Games Summoner",
+  "description": "A League of Legends summoner profile from the Riot Games API",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Encrypted summoner ID (region-specific)"
+    },
+    "accountId": {
+      "type": "string",
+      "description": "Encrypted account ID (region-specific)"
+    },
+    "puuid": {
+      "type": "string",
+      "description": "Encrypted PUUID (globally unique, use for cross-game lookups)"
+    },
+    "name": {
+      "type": "string",
+      "description": "Summoner name (deprecated, use Riot ID gameName+tagLine)"
+    },
+    "profileIconId": {
+      "type": "integer",
+      "description": "Profile icon ID, resolvable via Data Dragon"
+    },
+    "revisionDate": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Unix timestamp of last profile update"
+    },
+    "summonerLevel": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Summoner level",
+      "minimum": 1
+    }
+  },
+  "required": ["id", "puuid", "summonerLevel"]
+}

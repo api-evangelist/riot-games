@@ -1,0 +1,139 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://github.com/api-evangelist/riot-games/blob/main/json-schema/riot-games-match-schema.json",
+  "title": "Riot Games Match",
+  "description": "A League of Legends match record from the Riot Games Match v5 API",
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "description": "Match metadata",
+      "properties": {
+        "dataVersion": {
+          "type": "string",
+          "description": "Match data version"
+        },
+        "matchId": {
+          "type": "string",
+          "description": "Match ID (e.g., NA1_4567890)"
+        },
+        "participants": {
+          "type": "array",
+          "description": "PUUIDs of all participants",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": ["matchId", "participants"]
+    },
+    "info": {
+      "type": "object",
+      "description": "Match information",
+      "properties": {
+        "gameCreation": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Unix timestamp when the game was created"
+        },
+        "gameDuration": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Game duration in seconds"
+        },
+        "gameId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "gameMode": {
+          "type": "string",
+          "description": "Game mode (e.g., CLASSIC, ARAM)",
+          "example": "CLASSIC"
+        },
+        "gameName": {
+          "type": "string"
+        },
+        "gameType": {
+          "type": "string",
+          "description": "Game type",
+          "example": "MATCHED_GAME"
+        },
+        "gameVersion": {
+          "type": "string",
+          "description": "Patch version"
+        },
+        "mapId": {
+          "type": "integer",
+          "description": "Map ID"
+        },
+        "participants": {
+          "type": "array",
+          "description": "Participant data for all 10 players",
+          "items": {
+            "$ref": "#/definitions/Participant"
+          }
+        },
+        "platformId": {
+          "type": "string",
+          "description": "Platform/region identifier",
+          "example": "NA1"
+        },
+        "queueId": {
+          "type": "integer",
+          "description": "Queue type ID"
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Participant": {
+      "type": "object",
+      "description": "A match participant's game data",
+      "properties": {
+        "puuid": {
+          "type": "string"
+        },
+        "summonerName": {
+          "type": "string"
+        },
+        "championId": {
+          "type": "integer"
+        },
+        "championName": {
+          "type": "string"
+        },
+        "kills": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "deaths": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "assists": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "totalDamageDealt": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "goldEarned": {
+          "type": "integer"
+        },
+        "win": {
+          "type": "boolean"
+        },
+        "teamId": {
+          "type": "integer",
+          "enum": [100, 200]
+        },
+        "teamPosition": {
+          "type": "string",
+          "enum": ["TOP", "JUNGLE", "MIDDLE", "BOTTOM", "UTILITY", ""]
+        }
+      }
+    }
+  },
+  "required": ["metadata", "info"]
+}

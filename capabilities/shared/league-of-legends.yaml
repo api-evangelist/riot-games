@@ -1,0 +1,351 @@
+naftiko: "1.0.0-alpha1"
+
+info:
+  label: "League of Legends API"
+  description: "Access League of Legends summoner profiles, match history, ranked standings, champion mastery, and live game data."
+  tags:
+    - Gaming
+    - League of Legends
+    - Match History
+    - Ranked
+    - Riot Games
+  created: "2026-05-02"
+  modified: "2026-05-02"
+
+binds:
+  - namespace: env
+    keys:
+      RIOT_API_KEY: RIOT_API_KEY
+
+capability:
+  consumes:
+    - type: http
+      namespace: lol-api
+      baseUri: https://na1.api.riotgames.com
+      description: "League of Legends game data API."
+      authentication:
+        type: apikey
+        key: X-Riot-Token
+        value: "{{RIOT_API_KEY}}"
+        placement: header
+      resources:
+        - name: summoner
+          path: /lol/summoner/v4/summoners
+          description: "Summoner profile operations"
+          operations:
+            - name: get-summoner-by-puuid
+              method: GET
+              description: "Get summoner profile by PUUID"
+              inputParameters:
+                - name: encryptedPUUID
+                  in: path
+                  type: string
+                  required: true
+                  description: "Encrypted PUUID"
+              outputRawFormat: json
+              outputParameters:
+                - name: summoner
+                  type: object
+                  value: "$."
+            - name: get-summoner-by-id
+              method: GET
+              description: "Get summoner profile by encrypted summoner ID"
+              inputParameters:
+                - name: encryptedSummonerId
+                  in: path
+                  type: string
+                  required: true
+                  description: "Encrypted summoner ID"
+              outputRawFormat: json
+              outputParameters:
+                - name: summoner
+                  type: object
+                  value: "$."
+        - name: champion-mastery
+          path: /lol/champion-mastery/v4/champion-masteries
+          description: "Champion mastery data"
+          operations:
+            - name: get-champion-mastery
+              method: GET
+              description: "Get all champion mastery entries for a player"
+              inputParameters:
+                - name: encryptedPUUID
+                  in: path
+                  type: string
+                  required: true
+                  description: "Encrypted PUUID"
+                - name: count
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Number of entries to return"
+              outputRawFormat: json
+              outputParameters:
+                - name: masteries
+                  type: array
+                  value: "$."
+        - name: league
+          path: /lol/league/v4/entries
+          description: "Ranked league data"
+          operations:
+            - name: get-league-entries-by-summoner
+              method: GET
+              description: "Get ranked league entries for a summoner"
+              inputParameters:
+                - name: encryptedSummonerId
+                  in: path
+                  type: string
+                  required: true
+                  description: "Encrypted summoner ID"
+              outputRawFormat: json
+              outputParameters:
+                - name: entries
+                  type: array
+                  value: "$."
+            - name: get-league-entries
+              method: GET
+              description: "Get all entries for a queue, tier, and division"
+              inputParameters:
+                - name: queue
+                  in: path
+                  type: string
+                  required: true
+                  description: "Queue type (e.g., RANKED_SOLO_5x5)"
+                - name: tier
+                  in: path
+                  type: string
+                  required: true
+                  description: "Tier (e.g., GOLD)"
+                - name: division
+                  in: path
+                  type: string
+                  required: true
+                  description: "Division (e.g., I)"
+                - name: page
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Page number"
+              outputRawFormat: json
+              outputParameters:
+                - name: entries
+                  type: array
+                  value: "$."
+        - name: match
+          path: /lol/match/v5/matches
+          description: "Match history and detail"
+          operations:
+            - name: get-match-ids-by-puuid
+              method: GET
+              description: "Get list of match IDs for a player"
+              inputParameters:
+                - name: puuid
+                  in: path
+                  type: string
+                  required: true
+                  description: "Player PUUID"
+                - name: queue
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Filter by queue ID"
+                - name: count
+                  in: query
+                  type: integer
+                  required: false
+                  description: "Number of match IDs to return"
+              outputRawFormat: json
+              outputParameters:
+                - name: matchIds
+                  type: array
+                  value: "$."
+            - name: get-match
+              method: GET
+              description: "Get match details by match ID"
+              inputParameters:
+                - name: matchId
+                  in: path
+                  type: string
+                  required: true
+                  description: "Match ID"
+              outputRawFormat: json
+              outputParameters:
+                - name: match
+                  type: object
+                  value: "$."
+        - name: spectator
+          path: /lol/spectator/v5
+          description: "Live game data"
+          operations:
+            - name: get-live-game
+              method: GET
+              description: "Get current live game for a summoner"
+              inputParameters:
+                - name: encryptedSummonerId
+                  in: path
+                  type: string
+                  required: true
+                  description: "Encrypted summoner ID"
+              outputRawFormat: json
+              outputParameters:
+                - name: game
+                  type: object
+                  value: "$."
+            - name: get-featured-games
+              method: GET
+              description: "Get list of featured live games"
+              outputRawFormat: json
+              outputParameters:
+                - name: games
+                  type: object
+                  value: "$."
+        - name: champion
+          path: /lol/champion/v3
+          description: "Champion rotation data"
+          operations:
+            - name: get-champion-rotations
+              method: GET
+              description: "Get current free champion rotation"
+              outputRawFormat: json
+              outputParameters:
+                - name: rotation
+                  type: object
+                  value: "$."
+
+  exposes:
+    - type: rest
+      port: 8100
+      namespace: lol-rest-api
+      resources:
+        - path: /v1/summoners/{encryptedPUUID}
+          name: summoner
+          description: "Summoner by PUUID"
+          operations:
+            - method: GET
+              name: get-summoner-by-puuid
+              description: "Get summoner by PUUID"
+              call: "lol-api.get-summoner-by-puuid"
+              with:
+                encryptedPUUID: "rest.encryptedPUUID"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+        - path: /v1/matches/{puuid}/ids
+          name: match-ids
+          description: "Match IDs for a player"
+          operations:
+            - method: GET
+              name: get-match-ids-by-puuid
+              description: "Get match IDs for a player"
+              call: "lol-api.get-match-ids-by-puuid"
+              with:
+                puuid: "rest.puuid"
+                count: "rest.count"
+              outputParameters:
+                - type: array
+                  mapping: "$."
+        - path: /v1/matches/{matchId}
+          name: match
+          description: "Match details"
+          operations:
+            - method: GET
+              name: get-match
+              description: "Get match by ID"
+              call: "lol-api.get-match"
+              with:
+                matchId: "rest.matchId"
+              outputParameters:
+                - type: object
+                  mapping: "$."
+
+    - type: mcp
+      port: 9100
+      namespace: lol-mcp
+      transport: http
+      tools:
+        - name: get-summoner-by-puuid
+          description: "Get League of Legends summoner profile by PUUID"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "lol-api.get-summoner-by-puuid"
+          with:
+            encryptedPUUID: "tools.encryptedPUUID"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-champion-mastery
+          description: "Get champion mastery rankings for a player"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "lol-api.get-champion-mastery"
+          with:
+            encryptedPUUID: "tools.encryptedPUUID"
+            count: "tools.count"
+          outputParameters:
+            - type: array
+              mapping: "$."
+        - name: get-league-entries
+          description: "Get ranked standings for a summoner"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "lol-api.get-league-entries-by-summoner"
+          with:
+            encryptedSummonerId: "tools.encryptedSummonerId"
+          outputParameters:
+            - type: array
+              mapping: "$."
+        - name: get-match-ids
+          description: "Get recent match IDs for a player"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "lol-api.get-match-ids-by-puuid"
+          with:
+            puuid: "tools.puuid"
+            count: "tools.count"
+          outputParameters:
+            - type: array
+              mapping: "$."
+        - name: get-match
+          description: "Get full match details including all participants and stats"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "lol-api.get-match"
+          with:
+            matchId: "tools.matchId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-live-game
+          description: "Get live game data for a summoner currently in a match"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "lol-api.get-live-game"
+          with:
+            encryptedSummonerId: "tools.encryptedSummonerId"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-featured-games
+          description: "Get list of currently featured live games"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "lol-api.get-featured-games"
+          outputParameters:
+            - type: object
+              mapping: "$."
+        - name: get-champion-rotations
+          description: "Get the current free champion rotation"
+          hints:
+            readOnly: true
+            openWorld: true
+          call: "lol-api.get-champion-rotations"
+          outputParameters:
+            - type: object
+              mapping: "$."

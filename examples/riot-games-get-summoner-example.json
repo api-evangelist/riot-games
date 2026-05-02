@@ -1,0 +1,21 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/abc123puuid",
+    "headers": {
+      "X-Riot-Token": "RGAPI-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "id": "EncryptedSummonerIdHere",
+      "accountId": "EncryptedAccountIdHere",
+      "puuid": "abc123puuid",
+      "name": "CoolSummoner123",
+      "profileIconId": 4612,
+      "revisionDate": 1746201600000,
+      "summonerLevel": 312
+    }
+  }
+}

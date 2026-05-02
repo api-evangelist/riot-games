@@ -1,0 +1,58 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://americas.api.riotgames.com/lol/match/v5/matches/NA1_4567890123",
+    "headers": {
+      "X-Riot-Token": "RGAPI-xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "metadata": {
+        "dataVersion": "2",
+        "matchId": "NA1_4567890123",
+        "participants": [
+          "abc123puuid",
+          "def456puuid",
+          "ghi789puuid",
+          "jkl012puuid",
+          "mno345puuid",
+          "pqr678puuid",
+          "stu901puuid",
+          "vwx234puuid",
+          "yza567puuid",
+          "bcd890puuid"
+        ]
+      },
+      "info": {
+        "gameCreation": 1746201600000,
+        "gameDuration": 1823,
+        "gameId": 4567890123,
+        "gameMode": "CLASSIC",
+        "gameName": "teambuilder-match-4567890123",
+        "gameType": "MATCHED_GAME",
+        "gameVersion": "14.9.601.3046",
+        "mapId": 11,
+        "platformId": "NA1",
+        "queueId": 420,
+        "participants": [
+          {
+            "puuid": "abc123puuid",
+            "summonerName": "CoolSummoner123",
+            "championId": 157,
+            "championName": "Yasuo",
+            "kills": 8,
+            "deaths": 4,
+            "assists": 12,
+            "totalDamageDealt": 187432,
+            "goldEarned": 14230,
+            "win": true,
+            "teamId": 100,
+            "teamPosition": "MIDDLE"
+          }
+        ]
+      }
+    }
+  }
+}
