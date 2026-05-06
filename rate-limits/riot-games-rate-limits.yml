@@ -4,112 +4,79 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Riot Games
 providerId: riot-games
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
 tags:
-  - Esports
-  - Gaming
+  - Riot Games
   - League of Legends
-  - Legends of Runeterra
-  - Teamfight Tactics
   - VALORANT
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Riot Games API surface. Captures per-tier
-  quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values to
-  be replaced with published provider limits.
+description: >-
+  Riot enforces app-level rate limits per region and per API key, plus method-level limits on
+  individual endpoints. Limits are applied across both the user's personal/production app
+  and the underlying service; either layer can return 429. Limits scale with key tier
+  (development/personal vs production), with production-key limits expandable for developers
+  in good standing.
+sources:
+  - https://developer.riotgames.com/docs/portal
+  - https://developer.riotgames.com/api-keys.html
 headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
   retryAfter: Retry-After
-  policy: RateLimit-Policy
+  rateLimitType: X-Rate-Limit-Type
 responseCodes:
   throttled: 429
-  quotaExceeded: 429
-  serviceUnavailable: 503
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - League of Legends API
-      - VALORANT API
-      - Teamfight Tactics API
-      - Legends of Runeterra API
-      - Riot Account API
-      - Riot Data Dragon
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - League of Legends API
-      - VALORANT API
-      - Teamfight Tactics API
-      - Legends of Runeterra API
-      - Riot Account API
-      - Riot Data Dragon
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
+  - name: Development / Personal key burst
+    scope: key/region
+    metric: requests_per_second
+    limit: 20
+    timeFrame: second
+    notes: >-
+      Personal and development keys share this 20 req / 1 s burst limit, enforced per region.
+  - name: Development / Personal key sustained
+    scope: key/region
+    metric: requests_per_2_minutes
     limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - League of Legends API
-      - VALORANT API
-      - Teamfight Tactics API
-      - Legends of Runeterra API
-      - Riot Account API
-      - Riot Data Dragon
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - League of Legends API
-      - VALORANT API
-      - Teamfight Tactics API
-      - Legends of Runeterra API
-      - Riot Account API
-      - Riot Data Dragon
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - League of Legends API
-      - VALORANT API
-      - Teamfight Tactics API
-      - Legends of Runeterra API
-      - Riot Account API
-      - Riot Data Dragon
+    notes: >-
+      100 requests per 2 minutes, per region, on personal/development keys.
+  - name: Production key burst
+    scope: key/region
+    metric: requests_per_10_seconds
+    limit: 500
+    notes: >-
+      500 requests per 10 seconds, per region. Expandable for approved production apps in
+      good standing.
+  - name: Production key sustained
+    scope: key/region
+    metric: requests_per_10_minutes
+    limit: 30000
+    notes: >-
+      30,000 requests per 10 minutes, per region. Expandable on request.
+  - name: Method-level limits
+    scope: key/method/region
+    metric: varies
+    limit: see endpoint reference
+    notes: >-
+      Individual endpoints carry their own per-method limits in addition to the app-level
+      caps; method limits surface as 429 with X-Rate-Limit-Type when triggered at the edge.
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+  - name: Per-Region Enforcement
+    description: >-
+      All rate limits are enforced per regional shard (e.g. NA1, EUW1, KR). A single key can
+      run against multiple regions but each region carries its own counter.
+  - name: Retry-After Compliance
+    description: >-
+      Clients must honor the Retry-After header on 429 responses and pause until the
+      indicated time before retrying.
+  - name: Rate Limit Type Header
+    description: >-
+      When the 429 originates at the API edge, X-Rate-Limit-Type identifies whether the
+      breach was at the application or method layer. The header is not guaranteed for 429s
+      surfaced by the underlying service.
+  - name: Production Approval
+    description: >-
+      Production-key issuance and any subsequent rate-limit raise requires Developer
+      Relations review of a working prototype and adherence to Riot's developer policies.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
