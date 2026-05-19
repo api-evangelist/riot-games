@@ -1,0 +1,187 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Riot Games League of Legends API — Match
+  description: 'Riot Games League of Legends API — Match. 3 operations. Lead operation: Get Match IDs By PUUID. Self-contained
+    Naftiko capability covering one Riot Games business surface.'
+  tags:
+  - Riot Games
+  - Match
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    RIOT_GAMES_API_KEY: RIOT_GAMES_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: league-of-legends-match
+    baseUri: https://na1.api.riotgames.com
+    description: Riot Games League of Legends API — Match business capability. Self-contained, no shared references.
+    resources:
+    - name: lol-match-v5-matches-by-puuid-puuid-ids
+      path: /lol/match/v5/matches/by-puuid/{puuid}/ids
+      operations:
+      - name: getmatchidsbypuuid
+        method: GET
+        description: Get Match IDs By PUUID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: puuid
+          in: path
+          type: string
+          required: true
+        - name: queue
+          in: query
+          type: integer
+          description: Filter by queue ID
+        - name: type
+          in: query
+          type: string
+          description: Filter by game type
+        - name: start
+          in: query
+          type: integer
+          description: Start index for pagination
+        - name: count
+          in: query
+          type: integer
+          description: Number of match IDs to return (max 100)
+    - name: lol-match-v5-matches-matchId
+      path: /lol/match/v5/matches/{matchId}
+      operations:
+      - name: getmatch
+        method: GET
+        description: Get Match
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: matchId
+          in: path
+          type: string
+          required: true
+    - name: lol-match-v5-matches-matchId-timeline
+      path: /lol/match/v5/matches/{matchId}/timeline
+      operations:
+      - name: getmatchtimeline
+        method: GET
+        description: Get Match Timeline
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: matchId
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: apikey
+      key: X-Riot-Token
+      value: '{{env.RIOT_GAMES_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: league-of-legends-match-rest
+    port: 8080
+    description: REST adapter for Riot Games League of Legends API — Match. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/lol/match/v5/matches/by-puuid/{puuid}/ids
+      name: lol-match-v5-matches-by-puuid-puuid-ids
+      description: REST surface for lol-match-v5-matches-by-puuid-puuid-ids.
+      operations:
+      - method: GET
+        name: getmatchidsbypuuid
+        description: Get Match IDs By PUUID
+        call: league-of-legends-match.getmatchidsbypuuid
+        with:
+          puuid: rest.puuid
+          queue: rest.queue
+          type: rest.type
+          start: rest.start
+          count: rest.count
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/lol/match/v5/matches/{matchid}
+      name: lol-match-v5-matches-matchid
+      description: REST surface for lol-match-v5-matches-matchId.
+      operations:
+      - method: GET
+        name: getmatch
+        description: Get Match
+        call: league-of-legends-match.getmatch
+        with:
+          matchId: rest.matchId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/lol/match/v5/matches/{matchid}/timeline
+      name: lol-match-v5-matches-matchid-timeline
+      description: REST surface for lol-match-v5-matches-matchId-timeline.
+      operations:
+      - method: GET
+        name: getmatchtimeline
+        description: Get Match Timeline
+        call: league-of-legends-match.getmatchtimeline
+        with:
+          matchId: rest.matchId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: league-of-legends-match-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Riot Games League of Legends API — Match. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: get-match-ids-puuid
+      description: Get Match IDs By PUUID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: league-of-legends-match.getmatchidsbypuuid
+      with:
+        puuid: tools.puuid
+        queue: tools.queue
+        type: tools.type
+        start: tools.start
+        count: tools.count
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-match
+      description: Get Match
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: league-of-legends-match.getmatch
+      with:
+        matchId: tools.matchId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-match-timeline
+      description: Get Match Timeline
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: league-of-legends-match.getmatchtimeline
+      with:
+        matchId: tools.matchId
+      outputParameters:
+      - type: object
+        mapping: $.

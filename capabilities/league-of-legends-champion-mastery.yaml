@@ -1,0 +1,134 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Riot Games League of Legends API — Champion Mastery
+  description: 'Riot Games League of Legends API — Champion Mastery. 2 operations. Lead operation: Get Champion Mastery By
+    PUUID. Self-contained Naftiko capability covering one Riot Games business surface.'
+  tags:
+  - Riot Games
+  - Champion Mastery
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    RIOT_GAMES_API_KEY: RIOT_GAMES_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: league-of-legends-champion-mastery
+    baseUri: https://na1.api.riotgames.com
+    description: Riot Games League of Legends API — Champion Mastery business capability. Self-contained, no shared references.
+    resources:
+    - name: lol-champion-mastery-v4-champion-masteries-by-puuid-encryptedPUUID
+      path: /lol/champion-mastery/v4/champion-masteries/by-puuid/{encryptedPUUID}
+      operations:
+      - name: getchampionmasterybypuuid
+        method: GET
+        description: Get Champion Mastery By PUUID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: encryptedPUUID
+          in: path
+          type: string
+          required: true
+        - name: count
+          in: query
+          type: integer
+          description: Number of champion mastery entries to return
+    - name: lol-champion-mastery-v4-champion-masteries-by-puuid-encryptedPUUID-by-champion-c
+      path: /lol/champion-mastery/v4/champion-masteries/by-puuid/{encryptedPUUID}/by-champion/{championId}
+      operations:
+      - name: getchampionmasterybypuuidandchampion
+        method: GET
+        description: Get Champion Mastery By PUUID And Champion
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: encryptedPUUID
+          in: path
+          type: string
+          required: true
+        - name: championId
+          in: path
+          type: integer
+          required: true
+    authentication:
+      type: apikey
+      key: X-Riot-Token
+      value: '{{env.RIOT_GAMES_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: league-of-legends-champion-mastery-rest
+    port: 8080
+    description: REST adapter for Riot Games League of Legends API — Champion Mastery. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/lol/champion-mastery/v4/champion-masteries/by-puuid/{encryptedpuuid}
+      name: lol-champion-mastery-v4-champion-masteries-by-puuid-encryptedpuuid
+      description: REST surface for lol-champion-mastery-v4-champion-masteries-by-puuid-encryptedPUUID.
+      operations:
+      - method: GET
+        name: getchampionmasterybypuuid
+        description: Get Champion Mastery By PUUID
+        call: league-of-legends-champion-mastery.getchampionmasterybypuuid
+        with:
+          encryptedPUUID: rest.encryptedPUUID
+          count: rest.count
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/lol/champion-mastery/v4/champion-masteries/by-puuid/{encryptedpuuid}/by-champion/{championid}
+      name: lol-champion-mastery-v4-champion-masteries-by-puuid-encryptedpuuid-by-champion-c
+      description: REST surface for lol-champion-mastery-v4-champion-masteries-by-puuid-encryptedPUUID-by-champion-c.
+      operations:
+      - method: GET
+        name: getchampionmasterybypuuidandchampion
+        description: Get Champion Mastery By PUUID And Champion
+        call: league-of-legends-champion-mastery.getchampionmasterybypuuidandchampion
+        with:
+          encryptedPUUID: rest.encryptedPUUID
+          championId: rest.championId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: league-of-legends-champion-mastery-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Riot Games League of Legends API — Champion Mastery. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: get-champion-mastery-puuid
+      description: Get Champion Mastery By PUUID
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: league-of-legends-champion-mastery.getchampionmasterybypuuid
+      with:
+        encryptedPUUID: tools.encryptedPUUID
+        count: tools.count
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-champion-mastery-puuid-and
+      description: Get Champion Mastery By PUUID And Champion
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: league-of-legends-champion-mastery.getchampionmasterybypuuidandchampion
+      with:
+        encryptedPUUID: tools.encryptedPUUID
+        championId: tools.championId
+      outputParameters:
+      - type: object
+        mapping: $.

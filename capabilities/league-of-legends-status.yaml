@@ -1,0 +1,72 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Riot Games League of Legends API — Status
+  description: 'Riot Games League of Legends API — Status. 1 operations. Lead operation: Get Platform Status. Self-contained
+    Naftiko capability covering one Riot Games business surface.'
+  tags:
+  - Riot Games
+  - Status
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    RIOT_GAMES_API_KEY: RIOT_GAMES_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: league-of-legends-status
+    baseUri: https://na1.api.riotgames.com
+    description: Riot Games League of Legends API — Status business capability. Self-contained, no shared references.
+    resources:
+    - name: lol-status-v4-platform-data
+      path: /lol/status/v4/platform-data
+      operations:
+      - name: getplatformstatus
+        method: GET
+        description: Get Platform Status
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: X-Riot-Token
+      value: '{{env.RIOT_GAMES_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: league-of-legends-status-rest
+    port: 8080
+    description: REST adapter for Riot Games League of Legends API — Status. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/lol/status/v4/platform-data
+      name: lol-status-v4-platform-data
+      description: REST surface for lol-status-v4-platform-data.
+      operations:
+      - method: GET
+        name: getplatformstatus
+        description: Get Platform Status
+        call: league-of-legends-status.getplatformstatus
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: league-of-legends-status-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Riot Games League of Legends API — Status. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: get-platform-status
+      description: Get Platform Status
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: league-of-legends-status.getplatformstatus
+      outputParameters:
+      - type: object
+        mapping: $.

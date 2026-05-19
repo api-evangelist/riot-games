@@ -1,0 +1,113 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Riot Games League of Legends API — Spectator
+  description: 'Riot Games League of Legends API — Spectator. 2 operations. Lead operation: Get Live Game. Self-contained
+    Naftiko capability covering one Riot Games business surface.'
+  tags:
+  - Riot Games
+  - Spectator
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    RIOT_GAMES_API_KEY: RIOT_GAMES_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: league-of-legends-spectator
+    baseUri: https://na1.api.riotgames.com
+    description: Riot Games League of Legends API — Spectator business capability. Self-contained, no shared references.
+    resources:
+    - name: lol-spectator-v5-active-games-by-summoner-encryptedSummonerId
+      path: /lol/spectator/v5/active-games/by-summoner/{encryptedSummonerId}
+      operations:
+      - name: getlivegame
+        method: GET
+        description: Get Live Game
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: encryptedSummonerId
+          in: path
+          type: string
+          required: true
+    - name: lol-spectator-v5-featured-games
+      path: /lol/spectator/v5/featured-games
+      operations:
+      - name: getfeaturedgames
+        method: GET
+        description: Get Featured Games
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: apikey
+      key: X-Riot-Token
+      value: '{{env.RIOT_GAMES_API_KEY}}'
+      placement: header
+  exposes:
+  - type: rest
+    namespace: league-of-legends-spectator-rest
+    port: 8080
+    description: REST adapter for Riot Games League of Legends API — Spectator. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/lol/spectator/v5/active-games/by-summoner/{encryptedsummonerid}
+      name: lol-spectator-v5-active-games-by-summoner-encryptedsummonerid
+      description: REST surface for lol-spectator-v5-active-games-by-summoner-encryptedSummonerId.
+      operations:
+      - method: GET
+        name: getlivegame
+        description: Get Live Game
+        call: league-of-legends-spectator.getlivegame
+        with:
+          encryptedSummonerId: rest.encryptedSummonerId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/lol/spectator/v5/featured-games
+      name: lol-spectator-v5-featured-games
+      description: REST surface for lol-spectator-v5-featured-games.
+      operations:
+      - method: GET
+        name: getfeaturedgames
+        description: Get Featured Games
+        call: league-of-legends-spectator.getfeaturedgames
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: league-of-legends-spectator-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Riot Games League of Legends API — Spectator. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: get-live-game
+      description: Get Live Game
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: league-of-legends-spectator.getlivegame
+      with:
+        encryptedSummonerId: tools.encryptedSummonerId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-featured-games
+      description: Get Featured Games
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: league-of-legends-spectator.getfeaturedgames
+      outputParameters:
+      - type: object
+        mapping: $.
