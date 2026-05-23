@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MatchTimelineDTO",
+  "title": "MatchTimelineDTO",
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "matchId": {
+          "type": "string"
+        }
+      }
+    },
+    "info": {
+      "type": "object",
+      "properties": {
+        "frameInterval": {
+          "type": "integer"
+        },
+        "frames": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      }
+    }
+  }
+}

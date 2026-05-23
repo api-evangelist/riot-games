@@ -1,0 +1,249 @@
+{
+  "provider": "Riot Games",
+  "providerId": "riot-games",
+  "kind": "json-structure",
+  "description": "Structural overview of the Riot Games API surface; extracted from openapi/.",
+  "schemaCount": 14,
+  "operationCount": 17,
+  "schemas": [
+    {
+      "name": "SummonerDTO",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "ChampionMasteryDTO",
+      "type": "object",
+      "propertyCount": 9,
+      "required": []
+    },
+    {
+      "name": "LeagueEntryDTO",
+      "type": "object",
+      "propertyCount": 13,
+      "required": []
+    },
+    {
+      "name": "LeagueListDTO",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "MatchDTO",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "MatchTimelineDTO",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "ParticipantDTO",
+      "type": "object",
+      "propertyCount": 12,
+      "required": []
+    },
+    {
+      "name": "CurrentGameInfoDTO",
+      "type": "object",
+      "propertyCount": 9,
+      "required": []
+    },
+    {
+      "name": "CurrentGameParticipantDTO",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "FeaturedGamesDTO",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "ClashPlayerDTO",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "ChampionInfoDTO",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "PlatformDataDTO",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "AccountDTO",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/lol/summoner/v4/summoners/by-name/{summonerName}",
+      "operationId": "getSummonerByName",
+      "summary": "Get Summoner By Name",
+      "tags": [
+        "Summoner"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/lol/summoner/v4/summoners/by-puuid/{encryptedPUUID}",
+      "operationId": "getSummonerByPUUID",
+      "summary": "Get Summoner By PUUID",
+      "tags": [
+        "Summoner"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/lol/summoner/v4/summoners/{encryptedSummonerId}",
+      "operationId": "getSummonerById",
+      "summary": "Get Summoner By ID",
+      "tags": [
+        "Summoner"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/lol/champion-mastery/v4/champion-masteries/by-puuid/{encryptedPUUID}",
+      "operationId": "getChampionMasteryByPUUID",
+      "summary": "Get Champion Mastery By PUUID",
+      "tags": [
+        "Champion Mastery"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/lol/champion-mastery/v4/champion-masteries/by-puuid/{encryptedPUUID}/by-champion/{championId}",
+      "operationId": "getChampionMasteryByPUUIDAndChampion",
+      "summary": "Get Champion Mastery By PUUID And Champion",
+      "tags": [
+        "Champion Mastery"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/lol/league/v4/entries/by-summoner/{encryptedSummonerId}",
+      "operationId": "getLeagueEntriesBySummoner",
+      "summary": "Get League Entries By Summoner",
+      "tags": [
+        "League"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/lol/league/v4/entries/{queue}/{tier}/{division}",
+      "operationId": "getLeagueEntries",
+      "summary": "Get League Entries",
+      "tags": [
+        "League"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/lol/league/v4/challengerleagues/by-queue/{queue}",
+      "operationId": "getChallengerLeague",
+      "summary": "Get Challenger League",
+      "tags": [
+        "League"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/lol/match/v5/matches/by-puuid/{puuid}/ids",
+      "operationId": "getMatchIdsByPUUID",
+      "summary": "Get Match IDs By PUUID",
+      "tags": [
+        "Match"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/lol/match/v5/matches/{matchId}",
+      "operationId": "getMatch",
+      "summary": "Get Match",
+      "tags": [
+        "Match"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/lol/match/v5/matches/{matchId}/timeline",
+      "operationId": "getMatchTimeline",
+      "summary": "Get Match Timeline",
+      "tags": [
+        "Match"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/lol/spectator/v5/active-games/by-summoner/{encryptedSummonerId}",
+      "operationId": "getLiveGame",
+      "summary": "Get Live Game",
+      "tags": [
+        "Spectator"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/lol/spectator/v5/featured-games",
+      "operationId": "getFeaturedGames",
+      "summary": "Get Featured Games",
+      "tags": [
+        "Spectator"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/lol/clash/v1/players/by-puuid/{puuid}",
+      "operationId": "getClashPlayersByPUUID",
+      "summary": "Get Clash Players By PUUID",
+      "tags": [
+        "Clash"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/lol/champion/v3/champion-rotations",
+      "operationId": "getChampionRotations",
+      "summary": "Get Champion Rotations",
+      "tags": [
+        "Champion"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/lol/status/v4/platform-data",
+      "operationId": "getPlatformStatus",
+      "summary": "Get Platform Status",
+      "tags": [
+        "Status"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/riot/account/v1/accounts/by-riot-id/{gameName}/{tagLine}",
+      "operationId": "getAccountByRiotId",
+      "summary": "Get Account By Riot ID",
+      "tags": [
+        "Summoner"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MatchDTO",
+  "title": "MatchDTO",
+  "type": "object",
+  "properties": {
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "dataVersion": {
+          "type": "string"
+        },
+        "matchId": {
+          "type": "string"
+        },
+        "participants": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "info": {
+      "type": "object",
+      "properties": {
+        "gameCreation": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "gameDuration": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "gameId": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "gameMode": {
+          "type": "string"
+        },
+        "gameName": {
+          "type": "string"
+        },
+        "gameType": {
+          "type": "string"
+        },
+        "gameVersion": {
+          "type": "string"
+        },
+        "mapId": {
+          "type": "integer"
+        },
+        "participants": {
+          "type": "array",
+          "items": {
+            "$ref": "#/components/schemas/ParticipantDTO"
+          }
+        },
+        "platformId": {
+          "type": "string"
+        },
+        "queueId": {
+          "type": "integer"
+        },
+        "teams": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        }
+      }
+    }
+  }
+}

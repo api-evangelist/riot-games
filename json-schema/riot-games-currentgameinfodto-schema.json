@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CurrentGameInfoDTO",
+  "title": "CurrentGameInfoDTO",
+  "type": "object",
+  "properties": {
+    "gameId": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "gameType": {
+      "type": "string"
+    },
+    "gameStartTime": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "mapId": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "gameLength": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "platformId": {
+      "type": "string"
+    },
+    "gameMode": {
+      "type": "string"
+    },
+    "gameQueueConfigId": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "participants": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/CurrentGameParticipantDTO"
+      }
+    }
+  }
+}

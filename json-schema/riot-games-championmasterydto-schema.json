@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ChampionMasteryDTO",
+  "title": "ChampionMasteryDTO",
+  "type": "object",
+  "properties": {
+    "puuid": {
+      "type": "string"
+    },
+    "championId": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "championLevel": {
+      "type": "integer"
+    },
+    "championPoints": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "lastPlayTime": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "championPointsSinceLastLevel": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "championPointsUntilNextLevel": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "chestGranted": {
+      "type": "boolean"
+    },
+    "tokensEarned": {
+      "type": "integer"
+    }
+  }
+}

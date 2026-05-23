@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SummonerDTO",
+  "title": "SummonerDTO",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Encrypted summoner ID"
+    },
+    "accountId": {
+      "type": "string",
+      "description": "Encrypted account ID"
+    },
+    "puuid": {
+      "type": "string",
+      "description": "Encrypted PUUID"
+    },
+    "name": {
+      "type": "string",
+      "description": "Summoner name (deprecated)"
+    },
+    "profileIconId": {
+      "type": "integer"
+    },
+    "revisionDate": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "summonerLevel": {
+      "type": "integer",
+      "format": "int64"
+    }
+  }
+}

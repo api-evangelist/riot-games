@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AccountDTO",
+  "title": "AccountDTO",
+  "type": "object",
+  "properties": {
+    "puuid": {
+      "type": "string",
+      "description": "Encrypted PUUID for use in game-specific APIs"
+    },
+    "gameName": {
+      "type": "string"
+    },
+    "tagLine": {
+      "type": "string"
+    }
+  }
+}

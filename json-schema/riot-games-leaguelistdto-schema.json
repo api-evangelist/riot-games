@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LeagueListDTO",
+  "title": "LeagueListDTO",
+  "type": "object",
+  "properties": {
+    "leagueId": {
+      "type": "string"
+    },
+    "entries": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/LeagueEntryDTO"
+      }
+    },
+    "tier": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "queue": {
+      "type": "string"
+    }
+  }
+}

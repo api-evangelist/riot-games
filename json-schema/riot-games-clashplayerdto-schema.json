@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ClashPlayerDTO",
+  "title": "ClashPlayerDTO",
+  "type": "object",
+  "properties": {
+    "summonerId": {
+      "type": "string"
+    },
+    "teamId": {
+      "type": "string"
+    },
+    "position": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string"
+    }
+  }
+}

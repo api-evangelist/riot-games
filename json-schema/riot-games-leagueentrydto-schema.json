@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LeagueEntryDTO",
+  "title": "LeagueEntryDTO",
+  "type": "object",
+  "properties": {
+    "leagueId": {
+      "type": "string"
+    },
+    "summonerId": {
+      "type": "string"
+    },
+    "summonerName": {
+      "type": "string"
+    },
+    "queueType": {
+      "type": "string"
+    },
+    "tier": {
+      "type": "string"
+    },
+    "rank": {
+      "type": "string"
+    },
+    "leaguePoints": {
+      "type": "integer"
+    },
+    "wins": {
+      "type": "integer"
+    },
+    "losses": {
+      "type": "integer"
+    },
+    "hotStreak": {
+      "type": "boolean"
+    },
+    "veteran": {
+      "type": "boolean"
+    },
+    "freshBlood": {
+      "type": "boolean"
+    },
+    "inactive": {
+      "type": "boolean"
+    }
+  }
+}

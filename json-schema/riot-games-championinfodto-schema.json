@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ChampionInfoDTO",
+  "title": "ChampionInfoDTO",
+  "type": "object",
+  "properties": {
+    "freeChampionIds": {
+      "type": "array",
+      "items": {
+        "type": "integer"
+      }
+    },
+    "freeChampionIdsForNewPlayers": {
+      "type": "array",
+      "items": {
+        "type": "integer"
+      }
+    },
+    "maxNewPlayerLevel": {
+      "type": "integer"
+    }
+  }
+}
