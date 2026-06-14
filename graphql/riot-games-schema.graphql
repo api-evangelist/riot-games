@@ -1,0 +1,1054 @@
+# Riot Games GraphQL Schema
+# Covers League of Legends, VALORANT, Teamfight Tactics, Legends of Runeterra, and cross-game account APIs
+# Based on https://developer.riotgames.com/apis and Data Dragon static data
+
+scalar DateTime
+scalar JSON
+
+# ─────────────────────────────────────────────
+# Account & Identity
+# ─────────────────────────────────────────────
+
+type Account {
+  puuid: PUUID!
+  gameName: String
+  tagLine: String
+  activeShards: [ActiveShard]
+}
+
+type PUUID {
+  value: String!
+}
+
+type ActiveShard {
+  puuid: String!
+  game: String!
+  activeShard: String!
+}
+
+type Summoner {
+  id: SummonerID!
+  accountId: String!
+  puuid: String!
+  name: SummonerName!
+  profileIconId: Int!
+  profileIcon: ProfileIcon
+  revisionDate: DateTime!
+  summonerLevel: SummonerLevel!
+}
+
+type SummonerID {
+  value: String!
+}
+
+type SummonerName {
+  value: String!
+}
+
+type SummonerLevel {
+  value: Int!
+}
+
+type ProfileIcon {
+  id: Int!
+  image: ImageData
+}
+
+# ─────────────────────────────────────────────
+# API Configuration
+# ─────────────────────────────────────────────
+
+type APIKey {
+  key: String!
+  owner: String
+  status: String!
+  rateLimits: RateLimits
+  allowedOrigins: [String]
+  createdAt: DateTime
+  expiresAt: DateTime
+}
+
+type RateLimits {
+  applicationLimits: [RateLimit]
+  methodLimits: [RateLimit]
+}
+
+type RateLimit {
+  requests: Int!
+  seconds: Int!
+}
+
+type Region {
+  id: String!
+  name: String!
+  endpoint: String!
+  platforms: [Platform]
+}
+
+type Platform {
+  id: String!
+  region: String!
+  host: String!
+}
+
+# ─────────────────────────────────────────────
+# Champion Data (League of Legends / Data Dragon)
+# ─────────────────────────────────────────────
+
+type Champion {
+  id: String!
+  key: Int!
+  name: String!
+  title: String!
+  blurb: String!
+  info: ChampionInfo
+  image: ImageData
+  tags: [String]
+  partype: String
+  stats: ChampionStats
+  skins: [ChampionSkin]
+  spells: [ChampionSpell]
+  passive: ChampionPassive
+  lore: String
+  allytips: [String]
+  enemytips: [String]
+}
+
+type ChampionDetail {
+  id: String!
+  key: Int!
+  name: String!
+  fullData: JSON
+  skins: [ChampionSkin]
+  stats: ChampionStats
+  spells: [ChampionSpell]
+}
+
+type ChampionInfo {
+  attack: Int
+  defense: Int
+  magic: Int
+  difficulty: Int
+}
+
+type ChampionStats {
+  hp: Float
+  hpperlevel: Float
+  mp: Float
+  mpperlevel: Float
+  movespeed: Float
+  armor: Float
+  armorperlevel: Float
+  spellblock: Float
+  spellblockperlevel: Float
+  attackrange: Float
+  hpregen: Float
+  hpregenperlevel: Float
+  mpregen: Float
+  mpregenperlevel: Float
+  crit: Float
+  critperlevel: Float
+  attackdamage: Float
+  attackdamageperlevel: Float
+  attackspeedperlevel: Float
+  attackspeed: Float
+}
+
+type ChampionSkin {
+  id: String!
+  num: Int!
+  name: String!
+  chromas: Boolean
+  chromaList: [Chromas]
+}
+
+type Skin {
+  id: String!
+  name: String!
+  skinLine: SkinLine
+  description: String
+  rarity: String
+  isLegacy: Boolean
+  splashPath: String
+  uncenteredSplashPath: String
+  tilePath: String
+  loadScreenPath: String
+}
+
+type Chromas {
+  id: Int!
+  name: String
+  chromaPath: String
+  colors: [String]
+}
+
+type SkinLine {
+  id: Int!
+  name: String!
+}
+
+type ChampionRotation {
+  maxNewPlayerLevel: Int
+  freeChampionIdsForNewPlayers: [Int]
+  freeChampionIds: [Int]
+  champions: [Champion]
+}
+
+type ChampionSpell {
+  id: String!
+  name: String!
+  description: String
+  tooltip: String
+  maxrank: Int
+  cooldown: [Float]
+  cost: [Float]
+  costType: String
+  image: ImageData
+}
+
+type ChampionPassive {
+  name: String!
+  description: String
+  image: ImageData
+}
+
+# ─────────────────────────────────────────────
+# Items
+# ─────────────────────────────────────────────
+
+type Item {
+  id: Int!
+  name: String!
+  description: String
+  colloq: String
+  plaintext: String
+  image: ImageData
+  gold: ItemGold
+  tags: [String]
+  maps: JSON
+  stats: ItemStat
+  depth: Int
+  consumed: Boolean
+  inStore: Boolean
+  hideFromAll: Boolean
+  requiredChampion: String
+  into: [String]
+  from: [String]
+}
+
+type ItemDetail {
+  id: Int!
+  name: String!
+  description: String
+  stats: ItemStat
+  gold: ItemGold
+  tags: [String]
+  from: [Item]
+  into: [Item]
+}
+
+type ItemStat {
+  FlatHPPoolMod: Float
+  FlatMPPoolMod: Float
+  PercentHPPoolMod: Float
+  FlatPhysicalDamageMod: Float
+  PercentAttackSpeedMod: Float
+  FlatCritChanceMod: Float
+  FlatMagicDamageMod: Float
+  FlatMovementSpeedMod: Float
+  FlatArmorMod: Float
+  FlatSpellBlockMod: Float
+  FlatHPRegenMod: Float
+  FlatMPRegenMod: Float
+}
+
+type ItemGold {
+  base: Int
+  purchasable: Boolean
+  total: Int
+  sell: Int
+}
+
+# ─────────────────────────────────────────────
+# Runes
+# ─────────────────────────────────────────────
+
+type Rune {
+  id: Int!
+  name: String!
+  shortDesc: String
+  longDesc: String
+  icon: String
+  key: String
+}
+
+type RunePath {
+  id: Int!
+  key: String!
+  icon: String
+  name: String!
+  slots: [RuneSlot]
+}
+
+type RuneSlot {
+  runes: [Rune]
+}
+
+# ─────────────────────────────────────────────
+# Summoner Spells
+# ─────────────────────────────────────────────
+
+type SummonerSpell {
+  id: String!
+  name: String!
+  description: String
+  tooltip: String
+  maxrank: Int
+  cooldown: [Float]
+  cooldownBurn: String
+  cost: [Int]
+  costBurn: String
+  costType: String
+  image: ImageData
+  key: String
+  summonerLevel: Int
+  modes: [String]
+}
+
+# ─────────────────────────────────────────────
+# Match History (League of Legends)
+# ─────────────────────────────────────────────
+
+type Match {
+  metadata: MatchMetadata!
+  info: MatchDetail!
+}
+
+type MatchMetadata {
+  dataVersion: String!
+  matchId: String!
+  participants: [String]!
+}
+
+type MatchDetail {
+  gameCreation: DateTime
+  gameDuration: Int
+  gameEndTimestamp: DateTime
+  gameId: String!
+  gameMode: GameMode
+  gameName: String
+  gameStartTimestamp: DateTime
+  gameType: String
+  gameVersion: String
+  mapId: Int
+  gameMap: GameMap
+  participants: [Participant]
+  platformId: String
+  queueId: Int
+  gameQueue: GameQueue
+  teams: [Team]
+  tournamentCode: String
+}
+
+type MatchTimeline {
+  metadata: MatchMetadata!
+  info: TimelineInfo!
+}
+
+type TimelineInfo {
+  frameInterval: Int
+  frames: [FrameData]
+  gameId: String
+  participants: [TimelineParticipant]
+}
+
+type TimelineParticipant {
+  participantId: Int!
+  puuid: String!
+}
+
+type FrameData {
+  events: [MatchEvent]
+  participantFrames: JSON
+  timestamp: Int
+  championFrames: [ChampionFrame]
+}
+
+type ChampionFrame {
+  participantId: Int!
+  currentGold: Int
+  goldPerSecond: Int
+  jungleMinionsKilled: Int
+  level: Int
+  minionsKilled: Int
+  teamScore: Int
+  totalGold: Int
+  xp: Int
+  position: Position
+}
+
+type Position {
+  x: Int!
+  y: Int!
+}
+
+type Team {
+  bans: [Ban]
+  objectives: TeamObjectives
+  teamId: Int!
+  win: Boolean
+}
+
+type TeamObjectives {
+  baron: ObjectiveData
+  champion: ObjectiveData
+  dragon: ObjectiveData
+  horde: ObjectiveData
+  inhibitor: ObjectiveData
+  riftHerald: ObjectiveData
+  tower: ObjectiveData
+}
+
+type ObjectiveData {
+  first: Boolean
+  kills: Int
+}
+
+type Ban {
+  championId: Int!
+  pickTurn: Int!
+  champion: Champion
+}
+
+type Participant {
+  assists: Int
+  baronKills: Int
+  bountyLevel: Int
+  champExperience: Int
+  champLevel: Int
+  championId: Int!
+  championName: String
+  champion: Champion
+  championTransform: Int
+  consumablesPurchased: Int
+  damageDealtToBuildings: Int
+  damageDealtToObjectives: Int
+  damageDealtToTurrets: Int
+  damageSelfMitigated: Int
+  deaths: Int
+  detectorWardsPlaced: Int
+  doubleKills: Int
+  dragonKills: Int
+  firstBloodAssist: Boolean
+  firstBloodKill: Boolean
+  firstTowerAssist: Boolean
+  firstTowerKill: Boolean
+  gameEndedInEarlySurrender: Boolean
+  gameEndedInSurrender: Boolean
+  goldEarned: Int
+  goldSpent: Int
+  individualPosition: String
+  inhibitorKills: Int
+  inhibitorTakedowns: Int
+  inhibitorsLost: Int
+  item0: Int
+  item1: Int
+  item2: Int
+  item3: Int
+  item4: Int
+  item5: Int
+  item6: Int
+  itemsPurchased: Int
+  killingSprees: Int
+  kills: Int
+  lane: String
+  largestCriticalStrike: Int
+  largestKillingSpree: Int
+  largestMultiKill: Int
+  longestTimeSpentLiving: Int
+  magicDamageDealt: Int
+  magicDamageDealtToChampions: Int
+  magicDamageTaken: Int
+  neutralMinionsKilled: Int
+  nexusKills: Int
+  nexusTakedowns: Int
+  nexusLost: Int
+  objectivesStolen: Int
+  objectivesStolenAssists: Int
+  participantId: Int!
+  pentaKills: Int
+  perks: StatPerks
+  physicalDamageDealt: Int
+  physicalDamageDealtToChampions: Int
+  physicalDamageTaken: Int
+  profileIcon: Int
+  puuid: String!
+  quadraKills: Int
+  riotIdGameName: String
+  riotIdTagline: String
+  role: String
+  sightWardsBoughtInGame: Int
+  spell1Casts: Int
+  spell2Casts: Int
+  spell3Casts: Int
+  spell4Casts: Int
+  summoner1Casts: Int
+  summoner1Id: Int
+  summoner2Casts: Int
+  summoner2Id: Int
+  summonerId: String
+  summonerLevel: Int
+  summonerName: String
+  teamEarlySurrendered: Boolean
+  teamId: Int
+  teamPosition: String
+  timeCCingOthers: Int
+  timePlayed: Int
+  totalAllyJungleMinionsKilled: Int
+  totalDamageDealt: Int
+  totalDamageDealtToChampions: Int
+  totalDamageShieldedOnTeammates: Int
+  totalDamageTaken: Int
+  totalEnemyJungleMinionsKilled: Int
+  totalHeal: Int
+  totalHealsOnTeammates: Int
+  totalMinionsKilled: Int
+  totalTimeCCDealt: Int
+  totalTimeSpentDead: Int
+  totalUnitsHealed: Int
+  tripleKills: Int
+  trueDamageDealt: Int
+  trueDamageDealtToChampions: Int
+  trueDamageTaken: Int
+  turretKills: Int
+  turretTakedowns: Int
+  turretsLost: Int
+  unrealKills: Int
+  visionScore: Int
+  visionWardsBoughtInGame: Int
+  wardsKilled: Int
+  wardsPlaced: Int
+  win: Boolean
+  participantStats: ParticipantStats
+}
+
+type ParticipantStats {
+  kills: Int
+  deaths: Int
+  assists: Int
+  totalDamageDealtToChampions: Int
+  goldEarned: Int
+  visionScore: Int
+  cs: Int
+}
+
+type StatPerks {
+  defense: Int
+  flex: Int
+  offense: Int
+  styles: [PerkStyle]
+}
+
+type PerkStyle {
+  description: String
+  selections: [PerkSelection]
+  style: Int
+}
+
+type PerkSelection {
+  perk: Int!
+  var1: Int
+  var2: Int
+  var3: Int
+  runeData: Rune
+}
+
+type Perk {
+  id: Int!
+  name: String!
+  shortDesc: String
+  longDesc: String
+  icon: String
+}
+
+type MatchEvent {
+  timestamp: Int!
+  type: String!
+  killEvent: KillEvent
+  itemEvent: ItemEvent
+  participantId: Int
+  position: Position
+  realTimestamp: DateTime
+}
+
+type KillEvent {
+  killerId: Int
+  victimId: Int
+  assistingParticipantIds: [Int]
+  bounty: Int
+  killType: String
+  position: Position
+}
+
+type ItemEvent {
+  itemId: Int
+  participantId: Int
+  item: Item
+}
+
+# ─────────────────────────────────────────────
+# Game Metadata
+# ─────────────────────────────────────────────
+
+type Game {
+  gameId: String!
+  gameMode: GameMode
+  gameType: String
+  gameVersion: String
+  mapId: Int
+  gameMap: GameMap
+  platformId: String
+  queueId: Int
+  gameQueue: GameQueue
+  gameCreation: DateTime
+  gameDuration: Int
+}
+
+type GameMap {
+  mapId: Int!
+  mapName: String!
+  notes: String
+  imagePath: String
+}
+
+type GameMode {
+  gameMode: String!
+  description: String
+}
+
+type GameQueue {
+  queueId: Int!
+  map: String
+  description: String
+  notes: String
+}
+
+# ─────────────────────────────────────────────
+# Ranked / League Entries
+# ─────────────────────────────────────────────
+
+type LeagueEntry {
+  leagueId: String
+  summonerId: String!
+  summonerName: String
+  summonerData: Summoner
+  queueType: String!
+  tier: Tier!
+  rank: Rank!
+  division: Division
+  leaguePoints: Int!
+  wins: Int!
+  losses: Int!
+  hotStreak: Boolean
+  veteran: Boolean
+  freshBlood: Boolean
+  inactive: Boolean
+  miniSeries: MiniSeries
+}
+
+type LeagueList {
+  leagueId: String!
+  entries: [LeagueEntry]
+  tier: Tier!
+  name: String
+  queue: String!
+}
+
+type MiniSeries {
+  losses: Int!
+  progress: String!
+  target: Int!
+  wins: Int!
+}
+
+type Rank {
+  value: String!
+}
+
+type Tier {
+  value: String!
+}
+
+type Division {
+  value: String!
+}
+
+# ─────────────────────────────────────────────
+# Live Game / Spectate
+# ─────────────────────────────────────────────
+
+type LiveGame {
+  gameId: String!
+  gameType: String
+  gameStartTime: DateTime
+  mapId: Int
+  gameLength: Int
+  platformId: String
+  gameMode: String
+  gameQueueConfigId: Int
+  participants: [SpectateParticipant]
+  bannedChampions: [Ban]
+  observers: Observer
+  gameMap: GameMap
+}
+
+type Spectate {
+  gameId: String!
+  encryptionKey: String
+  observers: Observer
+  participants: [SpectateParticipant]
+}
+
+type SpectateParticipant {
+  teamId: Int
+  spell1Id: Int
+  spell2Id: Int
+  championId: Int
+  champion: Champion
+  profileIconId: Int
+  summonerName: String
+  summonerId: String
+  bot: Boolean
+  perks: SpectatePerks
+  riotId: String
+  puuid: String
+  gameCustomizationObjects: [JSON]
+}
+
+type SpectatePerks {
+  perkIds: [Int]
+  perkStyle: Int
+  perkSubStyle: Int
+}
+
+type Observer {
+  encryptionKey: String!
+}
+
+# ─────────────────────────────────────────────
+# Champion Mastery
+# ─────────────────────────────────────────────
+
+type Masteries {
+  summonerId: String!
+  puuid: String!
+  entries: [ChampionMastery]
+  totalScore: Int
+}
+
+type ChampionMastery {
+  puuid: String!
+  summonerId: String!
+  championId: Int!
+  champion: Champion
+  championLevel: MasteryLevel!
+  championPoints: Int!
+  lastPlayTime: DateTime
+  championPointsSinceLastLevel: Int
+  championPointsUntilNextLevel: Int
+  markRequiredForNextLevel: Int
+  chestGranted: Boolean
+  tokensEarned: Int
+}
+
+type MasteryLevel {
+  value: Int!
+}
+
+# ─────────────────────────────────────────────
+# VALORANT
+# ─────────────────────────────────────────────
+
+type ValorantMatch {
+  matchId: String!
+  mapId: String
+  gameVersion: String
+  gameLengthMillis: Int
+  region: String
+  gameStartMillis: DateTime
+  provisioningFlowId: String
+  isCompleted: Boolean
+  customGameName: String
+  queueId: String
+  gameMode: String
+  isRanked: Boolean
+  seasonId: String
+  rounds: [ValorantRound]
+  players: [ValorantPlayer]
+  teams: [ValorantTeam]
+}
+
+type ValorantRound {
+  roundNum: Int!
+  roundResult: String
+  roundCeremony: String
+  winningTeam: String
+  bombPlanter: String
+  bombDefuser: String
+  plantRoundTime: Int
+  defuseRoundTime: Int
+  plantSite: String
+  playerStats: [ValorantRoundPlayerStat]
+}
+
+type ValorantRoundPlayerStat {
+  puuid: String!
+  kills: [ValorantKill]
+  damage: [ValorantDamage]
+  score: Int
+  economy: ValorantEconomy
+  ability: ValorantAbilityUse
+  wasAfk: Boolean
+  wasPenalized: Boolean
+  stayedInSpawn: Boolean
+}
+
+type ValorantKill {
+  timeSinceGameStartMillis: Int
+  timeSinceRoundStartMillis: Int
+  killer: String
+  victim: String
+  victimLocation: ValorantLocation
+  assistants: [String]
+  playerLocations: [ValorantPlayerLocation]
+  finishingDamage: ValorantDamageSource
+}
+
+type ValorantDamage {
+  receiver: String
+  damage: Int
+  legshots: Int
+  bodyshots: Int
+  headshots: Int
+}
+
+type ValorantEconomy {
+  loadoutValue: Int
+  weapon: String
+  armor: String
+  remaining: Int
+  spent: Int
+}
+
+type ValorantAbilityUse {
+  grenadeEffects: Int
+  ability1Effects: Int
+  ability2Effects: Int
+  ultimateEffects: Int
+}
+
+type ValorantLocation {
+  x: Float
+  y: Float
+}
+
+type ValorantPlayerLocation {
+  puuid: String
+  viewRadians: Float
+  location: ValorantLocation
+}
+
+type ValorantDamageSource {
+  damageType: String
+  damageItem: String
+  isSecondaryFireMode: Boolean
+}
+
+type ValorantPlayer {
+  puuid: String!
+  gameName: String
+  tagLine: String
+  teamId: String
+  partyId: String
+  characterId: String
+  stats: ValorantPlayerStats
+  competitiveTier: Int
+  isObserver: Boolean
+  playerCard: String
+  playerTitle: String
+  accountLevel: Int
+}
+
+type ValorantPlayerStats {
+  score: Int
+  roundsPlayed: Int
+  kills: Int
+  deaths: Int
+  assists: Int
+  playtimeMillis: Int
+  abilityCasts: ValorantAbilityCasts
+}
+
+type ValorantAbilityCasts {
+  grenadeCasts: Int
+  ability1Casts: Int
+  ability2Casts: Int
+  ultimateCasts: Int
+}
+
+type ValorantTeam {
+  teamId: String!
+  won: Boolean
+  roundsPlayed: Int
+  roundsWon: Int
+  numPoints: Int
+}
+
+# ─────────────────────────────────────────────
+# Teamfight Tactics (TFT)
+# ─────────────────────────────────────────────
+
+type TFTMatch {
+  metadata: MatchMetadata!
+  info: TFTMatchInfo!
+}
+
+type TFTMatchInfo {
+  gameDatetime: DateTime
+  gameLenght: Float
+  gameVariation: String
+  gameVersion: String
+  participants: [TFTParticipant]
+  queueId: Int
+  tftSetNumber: Int
+  tftSetCoreName: String
+}
+
+type TFTParticipant {
+  augments: [String]
+  augmentDetails: [TFTAugment]
+  companionContentId: String
+  companionItemId: Int
+  companionSkinId: Int
+  companionSpecies: String
+  goldLeft: Int
+  lastRound: Int
+  level: Int
+  placement: Int
+  playersEliminated: Int
+  puuid: String!
+  timeEliminated: Float
+  totalDamageToPlayers: Int
+  traits: [TFTComposition]
+  units: [TFTUnit]
+}
+
+type TFTComposition {
+  name: String!
+  numUnits: Int
+  style: Int
+  tierCurrent: Int
+  tierTotal: Int
+}
+
+type TFTAugment {
+  id: String!
+  name: String!
+  desc: String
+  iconSmall: String
+  tier: Int
+}
+
+type TFTUnit {
+  characterId: String!
+  name: String
+  chosen: String
+  itemNames: [String]
+  items: [Item]
+  rarity: Int
+  tier: Int
+}
+
+# ─────────────────────────────────────────────
+# Shared / Utility
+# ─────────────────────────────────────────────
+
+type ImageData {
+  full: String
+  sprite: String
+  group: String
+  x: Int
+  y: Int
+  w: Int
+  h: Int
+  url: String
+}
+
+# ─────────────────────────────────────────────
+# Root Query
+# ─────────────────────────────────────────────
+
+type Query {
+  # Account
+  account(puuid: String!): Account
+  accountByRiotId(gameName: String!, tagLine: String!): Account
+
+  # Summoner
+  summonerByName(region: String!, summonerName: String!): Summoner
+  summonerByPuuid(region: String!, puuid: String!): Summoner
+  summonerById(region: String!, summonerId: String!): Summoner
+
+  # Champion Data (Data Dragon)
+  champions(version: String, locale: String): [Champion]
+  champion(id: String!, version: String): ChampionDetail
+  championRotation(region: String!): ChampionRotation
+
+  # Items
+  items(version: String, locale: String): [Item]
+  item(id: Int!, version: String): ItemDetail
+
+  # Runes
+  runePaths(version: String, locale: String): [RunePath]
+
+  # Summoner Spells
+  summonerSpells(version: String, locale: String): [SummonerSpell]
+
+  # Match History (LoL)
+  matchIds(puuid: String!, region: String!, queue: Int, type: String, start: Int, count: Int): [String]
+  match(matchId: String!, region: String!): Match
+  matchTimeline(matchId: String!, region: String!): MatchTimeline
+
+  # Ranked
+  leagueEntriesBySummoner(region: String!, summonerId: String!): [LeagueEntry]
+  challengerLeague(region: String!, queue: String!): LeagueList
+  grandmasterLeague(region: String!, queue: String!): LeagueList
+  masterLeague(region: String!, queue: String!): LeagueList
+
+  # Live Game
+  liveGame(region: String!, summonerId: String!): LiveGame
+  featuredGames(region: String!): [LiveGame]
+
+  # Champion Mastery
+  championMasteries(region: String!, puuid: String!): Masteries
+  championMastery(region: String!, puuid: String!, championId: Int!): ChampionMastery
+  topChampionMasteries(region: String!, puuid: String!, count: Int): [ChampionMastery]
+  masteryScore(region: String!, puuid: String!): Int
+
+  # VALORANT
+  valorantMatch(matchId: String!, region: String!): ValorantMatch
+  valorantMatchIds(puuid: String!, region: String!): [String]
+
+  # TFT
+  tftMatch(matchId: String!, region: String!): TFTMatch
+  tftMatchIds(puuid: String!, region: String!): [String]
+  tftLeagueEntries(region: String!, summonerId: String!): [LeagueEntry]
+
+  # Game Metadata
+  queues: [GameQueue]
+  maps: [GameMap]
+  gameModes: [GameMode]
+
+  # Platform
+  regions: [Region]
+  platforms: [Platform]
+}
