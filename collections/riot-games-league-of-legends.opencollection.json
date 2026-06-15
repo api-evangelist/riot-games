@@ -1,0 +1,519 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Riot Games League of Legends API",
+    "version": "v4/v5"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Summoner",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Summoner By Name",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/:summonerName",
+            "params": [
+              {
+                "name": "summonerName",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Riot-Token",
+              "value": "{{X-Riot-Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get a summoner by summoner name. Deprecated - use Riot ID instead."
+        },
+        {
+          "info": {
+            "name": "Get Summoner By PUUID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/:encryptedPUUID",
+            "params": [
+              {
+                "name": "encryptedPUUID",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Riot-Token",
+              "value": "{{X-Riot-Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get a summoner by PUUID."
+        },
+        {
+          "info": {
+            "name": "Get Summoner By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.api.riotgames.com/lol/summoner/v4/summoners/:encryptedSummonerId",
+            "params": [
+              {
+                "name": "encryptedSummonerId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Riot-Token",
+              "value": "{{X-Riot-Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get a summoner by encrypted summoner ID."
+        },
+        {
+          "info": {
+            "name": "Get Account By Riot ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.api.riotgames.com/riot/account/v1/accounts/by-riot-id/:gameName/:tagLine",
+            "params": [
+              {
+                "name": "gameName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "tagLine",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Riot-Token",
+              "value": "{{X-Riot-Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get account by Riot ID (gameName + tagLine). Returns PUUID for use in other APIs."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Champion Mastery",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Champion Mastery By PUUID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-puuid/:encryptedPUUID",
+            "params": [
+              {
+                "name": "encryptedPUUID",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Number of champion mastery entries to return"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Riot-Token",
+              "value": "{{X-Riot-Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get all champion mastery entries sorted by number of champion points descending."
+        },
+        {
+          "info": {
+            "name": "Get Champion Mastery By PUUID And Champion",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-puuid/:encryptedPUUID/by-champion/:championId",
+            "params": [
+              {
+                "name": "encryptedPUUID",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "championId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Riot-Token",
+              "value": "{{X-Riot-Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get a champion mastery by PUUID and champion ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "League",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get League Entries By Summoner",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.api.riotgames.com/lol/league/v4/entries/by-summoner/:encryptedSummonerId",
+            "params": [
+              {
+                "name": "encryptedSummonerId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Riot-Token",
+              "value": "{{X-Riot-Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get league entries in all queues for a given summoner ID."
+        },
+        {
+          "info": {
+            "name": "Get League Entries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.api.riotgames.com/lol/league/v4/entries/:queue/:tier/:division",
+            "params": [
+              {
+                "name": "queue",
+                "value": "",
+                "type": "path",
+                "description": "Queue type (e.g., RANKED_SOLO_5x5)"
+              },
+              {
+                "name": "tier",
+                "value": "",
+                "type": "path",
+                "description": "Tier (e.g., GOLD)"
+              },
+              {
+                "name": "division",
+                "value": "",
+                "type": "path",
+                "description": "Division (e.g., I)"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Riot-Token",
+              "value": "{{X-Riot-Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get all the league entries for a given queue, tier, and division."
+        },
+        {
+          "info": {
+            "name": "Get Challenger League",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.api.riotgames.com/lol/league/v4/challengerleagues/by-queue/:queue",
+            "params": [
+              {
+                "name": "queue",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Riot-Token",
+              "value": "{{X-Riot-Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get the challenger league for a given queue."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Match",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Match IDs By PUUID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.api.riotgames.com/lol/match/v5/matches/by-puuid/:puuid/ids",
+            "params": [
+              {
+                "name": "puuid",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "queue",
+                "value": "",
+                "type": "query",
+                "description": "Filter by queue ID"
+              },
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by game type"
+              },
+              {
+                "name": "start",
+                "value": "",
+                "type": "query",
+                "description": "Start index for pagination"
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Number of match IDs to return (max 100)"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Riot-Token",
+              "value": "{{X-Riot-Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get a list of match IDs by PUUID."
+        },
+        {
+          "info": {
+            "name": "Get Match",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.api.riotgames.com/lol/match/v5/matches/:matchId",
+            "params": [
+              {
+                "name": "matchId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Riot-Token",
+              "value": "{{X-Riot-Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get match by match ID."
+        },
+        {
+          "info": {
+            "name": "Get Match Timeline",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.api.riotgames.com/lol/match/v5/matches/:matchId/timeline",
+            "params": [
+              {
+                "name": "matchId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Riot-Token",
+              "value": "{{X-Riot-Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get match timeline by match ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Spectator",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Live Game",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.api.riotgames.com/lol/spectator/v5/active-games/by-summoner/:encryptedSummonerId",
+            "params": [
+              {
+                "name": "encryptedSummonerId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Riot-Token",
+              "value": "{{X-Riot-Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get current game information for the given summoner ID."
+        },
+        {
+          "info": {
+            "name": "Get Featured Games",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.api.riotgames.com/lol/spectator/v5/featured-games",
+            "auth": {
+              "type": "apikey",
+              "key": "X-Riot-Token",
+              "value": "{{X-Riot-Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get list of featured games."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Clash",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Clash Players By PUUID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.api.riotgames.com/lol/clash/v1/players/by-puuid/:puuid",
+            "params": [
+              {
+                "name": "puuid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Riot-Token",
+              "value": "{{X-Riot-Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get players in Clash by PUUID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Champion",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Champion Rotations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.api.riotgames.com/lol/champion/v3/champion-rotations",
+            "auth": {
+              "type": "apikey",
+              "key": "X-Riot-Token",
+              "value": "{{X-Riot-Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get the current free champion rotation and weekly free champion rotation."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Status",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Platform Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.api.riotgames.com/lol/status/v4/platform-data",
+            "auth": {
+              "type": "apikey",
+              "key": "X-Riot-Token",
+              "value": "{{X-Riot-Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get League of Legends platform status."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
