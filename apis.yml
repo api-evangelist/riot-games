@@ -128,9 +128,9 @@ common:
   url: https://developer.riotgames.com/docs/portal
 - type: RateLimiting
   url: https://developer.riotgames.com/docs/portal
-- type: GithubOrg
+- type: GitHubOrg
   url: https://github.com/RiotGames
-- type: SignUp
+- type: Signup
   url: https://developer.riotgames.com/
 - type: TermsOfService
   url: https://developer.riotgames.com/policies/general
