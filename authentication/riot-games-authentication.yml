@@ -1,0 +1,15 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/riot-games-league-of-legends-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: ApiKey
+  type: apiKey
+  in: header
+  parameter: X-Riot-Token
+  sources:
+  - openapi/riot-games-league-of-legends-openapi.yml

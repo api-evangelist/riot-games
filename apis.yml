@@ -118,6 +118,12 @@ apis:
   - type: Documentation
     url: https://developer.riotgames.com/docs/lol
 common:
+- type: VulnerabilityDisclosure
+  url: security/riot-games-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/riot-games-domain-security.yml
+- type: Authentication
+  url: authentication/riot-games-authentication.yml
 - type: LinkedIn
   url: https://www.linkedin.com/company/riot-games
 - type: Developer
