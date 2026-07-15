@@ -1,0 +1,184 @@
+generated: '2026-07-15'
+method: generated
+source: openapi/riot-games-league-of-legends-openapi.yml
+description: Recommended x-agentic-access execution contracts, classified heuristically from
+  the OpenAPI. A governance starting point for exposing this API to AI agents — review and bind
+  audience per deployment. See research/curity/agentic-governance/.
+summary:
+  operations: 17
+  by_action_class:
+    connected: 17
+  by_consequence:
+    read: 17
+  human_in_the_loop_required: 0
+operations:
+- path: /lol/summoner/v4/summoners/by-name/{summonerName}
+  method: get
+  operationId: getSummonerByName
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /lol/summoner/v4/summoners/by-puuid/{encryptedPUUID}
+  method: get
+  operationId: getSummonerByPUUID
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /lol/summoner/v4/summoners/{encryptedSummonerId}
+  method: get
+  operationId: getSummonerById
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /lol/champion-mastery/v4/champion-masteries/by-puuid/{encryptedPUUID}
+  method: get
+  operationId: getChampionMasteryByPUUID
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /lol/champion-mastery/v4/champion-masteries/by-puuid/{encryptedPUUID}/by-champion/{championId}
+  method: get
+  operationId: getChampionMasteryByPUUIDAndChampion
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /lol/league/v4/entries/by-summoner/{encryptedSummonerId}
+  method: get
+  operationId: getLeagueEntriesBySummoner
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /lol/league/v4/entries/{queue}/{tier}/{division}
+  method: get
+  operationId: getLeagueEntries
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /lol/league/v4/challengerleagues/by-queue/{queue}
+  method: get
+  operationId: getChallengerLeague
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /lol/match/v5/matches/by-puuid/{puuid}/ids
+  method: get
+  operationId: getMatchIdsByPUUID
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /lol/match/v5/matches/{matchId}
+  method: get
+  operationId: getMatch
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /lol/match/v5/matches/{matchId}/timeline
+  method: get
+  operationId: getMatchTimeline
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /lol/spectator/v5/active-games/by-summoner/{encryptedSummonerId}
+  method: get
+  operationId: getLiveGame
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /lol/spectator/v5/featured-games
+  method: get
+  operationId: getFeaturedGames
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /lol/clash/v1/players/by-puuid/{puuid}
+  method: get
+  operationId: getClashPlayersByPUUID
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /lol/champion/v3/champion-rotations
+  method: get
+  operationId: getChampionRotations
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /lol/status/v4/platform-data
+  method: get
+  operationId: getPlatformStatus
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none
+- path: /riot/account/v1/accounts/by-riot-id/{gameName}/{tagLine}
+  method: get
+  operationId: getAccountByRiotId
+  x-agentic-access:
+    action-class: connected
+    consequence: read
+    subject: optional
+    token:
+      max-ttl: 3600
+    audit: none

@@ -118,6 +118,8 @@ apis:
   - type: Documentation
     url: https://developer.riotgames.com/docs/lol
 common:
+- type: AgenticAccess
+  url: agentic-access/riot-games-agentic-access.yml
 - type: VulnerabilityDisclosure
   url: security/riot-games-vulnerability-disclosure.yml
 - type: DomainSecurity
