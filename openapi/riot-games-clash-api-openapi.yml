@@ -1,0 +1,64 @@
+openapi: 3.0.3
+info:
+  title: Riot Games League of Legends Champion Clash API
+  description: The Riot Games Developer API provides access to League of Legends game data including summoner profiles, champion mastery, ranked standings, match history, live spectator data, and tournament management. API keys are obtained through the Riot Developer Portal.
+  version: v4/v5
+  contact:
+    name: Riot Developer Portal
+    url: https://developer.riotgames.com/
+  termsOfService: https://developer.riotgames.com/policies/general
+servers:
+- url: https://na1.api.riotgames.com
+  description: North America
+- url: https://euw1.api.riotgames.com
+  description: Europe West
+- url: https://kr.api.riotgames.com
+  description: Korea
+- url: https://americas.api.riotgames.com
+  description: Americas (for account/match endpoints)
+tags:
+- name: Clash
+  description: Clash tournament operations
+paths:
+  /lol/clash/v1/players/by-puuid/{puuid}:
+    get:
+      operationId: getClashPlayersByPUUID
+      summary: Get Clash Players By PUUID
+      description: Get players in Clash by PUUID.
+      tags:
+      - Clash
+      parameters:
+      - name: puuid
+        in: path
+        required: true
+        schema:
+          type: string
+      security:
+      - ApiKey: []
+      responses:
+        '200':
+          description: Clash player list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ClashPlayerDTO'
+components:
+  schemas:
+    ClashPlayerDTO:
+      type: object
+      properties:
+        summonerId:
+          type: string
+        teamId:
+          type: string
+        position:
+          type: string
+        role:
+          type: string
+  securitySchemes:
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-Riot-Token

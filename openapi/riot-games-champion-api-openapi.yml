@@ -1,0 +1,58 @@
+openapi: 3.0.3
+info:
+  title: Riot Games League of Legends Champion API
+  description: The Riot Games Developer API provides access to League of Legends game data including summoner profiles, champion mastery, ranked standings, match history, live spectator data, and tournament management. API keys are obtained through the Riot Developer Portal.
+  version: v4/v5
+  contact:
+    name: Riot Developer Portal
+    url: https://developer.riotgames.com/
+  termsOfService: https://developer.riotgames.com/policies/general
+servers:
+- url: https://na1.api.riotgames.com
+  description: North America
+- url: https://euw1.api.riotgames.com
+  description: Europe West
+- url: https://kr.api.riotgames.com
+  description: Korea
+- url: https://americas.api.riotgames.com
+  description: Americas (for account/match endpoints)
+tags:
+- name: Champion
+  description: Free champion rotation
+paths:
+  /lol/champion/v3/champion-rotations:
+    get:
+      operationId: getChampionRotations
+      summary: Get Champion Rotations
+      description: Get the current free champion rotation and weekly free champion rotation.
+      tags:
+      - Champion
+      security:
+      - ApiKey: []
+      responses:
+        '200':
+          description: Champion rotation data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChampionInfoDTO'
+components:
+  schemas:
+    ChampionInfoDTO:
+      type: object
+      properties:
+        freeChampionIds:
+          type: array
+          items:
+            type: integer
+        freeChampionIdsForNewPlayers:
+          type: array
+          items:
+            type: integer
+        maxNewPlayerLevel:
+          type: integer
+  securitySchemes:
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-Riot-Token

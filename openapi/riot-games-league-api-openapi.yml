@@ -1,0 +1,161 @@
+openapi: 3.0.3
+info:
+  title: Riot Games of Legends Champion League API
+  description: The Riot Games Developer API provides access to League of Legends game data including summoner profiles, champion mastery, ranked standings, match history, live spectator data, and tournament management. API keys are obtained through the Riot Developer Portal.
+  version: v4/v5
+  contact:
+    name: Riot Developer Portal
+    url: https://developer.riotgames.com/
+  termsOfService: https://developer.riotgames.com/policies/general
+servers:
+- url: https://na1.api.riotgames.com
+  description: North America
+- url: https://euw1.api.riotgames.com
+  description: Europe West
+- url: https://kr.api.riotgames.com
+  description: Korea
+- url: https://americas.api.riotgames.com
+  description: Americas (for account/match endpoints)
+tags:
+- name: League
+  description: Ranked league standings
+paths:
+  /lol/league/v4/entries/by-summoner/{encryptedSummonerId}:
+    get:
+      operationId: getLeagueEntriesBySummoner
+      summary: Get League Entries By Summoner
+      description: Get league entries in all queues for a given summoner ID.
+      tags:
+      - League
+      parameters:
+      - name: encryptedSummonerId
+        in: path
+        required: true
+        schema:
+          type: string
+      security:
+      - ApiKey: []
+      responses:
+        '200':
+          description: League entries
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LeagueEntryDTO'
+  /lol/league/v4/entries/{queue}/{tier}/{division}:
+    get:
+      operationId: getLeagueEntries
+      summary: Get League Entries
+      description: Get all the league entries for a given queue, tier, and division.
+      tags:
+      - League
+      parameters:
+      - name: queue
+        in: path
+        required: true
+        description: Queue type (e.g., RANKED_SOLO_5x5)
+        schema:
+          type: string
+      - name: tier
+        in: path
+        required: true
+        description: Tier (e.g., GOLD)
+        schema:
+          type: string
+      - name: division
+        in: path
+        required: true
+        description: Division (e.g., I)
+        schema:
+          type: string
+      - name: page
+        in: query
+        schema:
+          type: integer
+          default: 1
+      security:
+      - ApiKey: []
+      responses:
+        '200':
+          description: League entries
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LeagueEntryDTO'
+  /lol/league/v4/challengerleagues/by-queue/{queue}:
+    get:
+      operationId: getChallengerLeague
+      summary: Get Challenger League
+      description: Get the challenger league for a given queue.
+      tags:
+      - League
+      parameters:
+      - name: queue
+        in: path
+        required: true
+        schema:
+          type: string
+      security:
+      - ApiKey: []
+      responses:
+        '200':
+          description: Challenger league
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LeagueListDTO'
+components:
+  schemas:
+    LeagueEntryDTO:
+      type: object
+      properties:
+        leagueId:
+          type: string
+        summonerId:
+          type: string
+        summonerName:
+          type: string
+        queueType:
+          type: string
+        tier:
+          type: string
+        rank:
+          type: string
+        leaguePoints:
+          type: integer
+        wins:
+          type: integer
+        losses:
+          type: integer
+        hotStreak:
+          type: boolean
+        veteran:
+          type: boolean
+        freshBlood:
+          type: boolean
+        inactive:
+          type: boolean
+    LeagueListDTO:
+      type: object
+      properties:
+        leagueId:
+          type: string
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/LeagueEntryDTO'
+        tier:
+          type: string
+        name:
+          type: string
+        queue:
+          type: string
+  securitySchemes:
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-Riot-Token

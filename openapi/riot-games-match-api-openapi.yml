@@ -1,0 +1,213 @@
+openapi: 3.0.3
+info:
+  title: Riot Games League of Legends Champion Match API
+  description: The Riot Games Developer API provides access to League of Legends game data including summoner profiles, champion mastery, ranked standings, match history, live spectator data, and tournament management. API keys are obtained through the Riot Developer Portal.
+  version: v4/v5
+  contact:
+    name: Riot Developer Portal
+    url: https://developer.riotgames.com/
+  termsOfService: https://developer.riotgames.com/policies/general
+servers:
+- url: https://na1.api.riotgames.com
+  description: North America
+- url: https://euw1.api.riotgames.com
+  description: Europe West
+- url: https://kr.api.riotgames.com
+  description: Korea
+- url: https://americas.api.riotgames.com
+  description: Americas (for account/match endpoints)
+tags:
+- name: Match
+  description: Match history and details
+paths:
+  /lol/match/v5/matches/by-puuid/{puuid}/ids:
+    get:
+      operationId: getMatchIdsByPUUID
+      summary: Get Match IDs By PUUID
+      description: Get a list of match IDs by PUUID.
+      tags:
+      - Match
+      parameters:
+      - name: puuid
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: queue
+        in: query
+        description: Filter by queue ID
+        schema:
+          type: integer
+      - name: type
+        in: query
+        description: Filter by game type
+        schema:
+          type: string
+      - name: start
+        in: query
+        description: Start index for pagination
+        schema:
+          type: integer
+          default: 0
+      - name: count
+        in: query
+        description: Number of match IDs to return (max 100)
+        schema:
+          type: integer
+          default: 20
+          maximum: 100
+      security:
+      - ApiKey: []
+      responses:
+        '200':
+          description: List of match IDs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+  /lol/match/v5/matches/{matchId}:
+    get:
+      operationId: getMatch
+      summary: Get Match
+      description: Get match by match ID.
+      tags:
+      - Match
+      parameters:
+      - name: matchId
+        in: path
+        required: true
+        schema:
+          type: string
+      security:
+      - ApiKey: []
+      responses:
+        '200':
+          description: Match data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MatchDTO'
+  /lol/match/v5/matches/{matchId}/timeline:
+    get:
+      operationId: getMatchTimeline
+      summary: Get Match Timeline
+      description: Get match timeline by match ID.
+      tags:
+      - Match
+      parameters:
+      - name: matchId
+        in: path
+        required: true
+        schema:
+          type: string
+      security:
+      - ApiKey: []
+      responses:
+        '200':
+          description: Match timeline
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MatchTimelineDTO'
+components:
+  schemas:
+    MatchTimelineDTO:
+      type: object
+      properties:
+        metadata:
+          type: object
+          properties:
+            matchId:
+              type: string
+        info:
+          type: object
+          properties:
+            frameInterval:
+              type: integer
+            frames:
+              type: array
+              items:
+                type: object
+    MatchDTO:
+      type: object
+      properties:
+        metadata:
+          type: object
+          properties:
+            dataVersion:
+              type: string
+            matchId:
+              type: string
+            participants:
+              type: array
+              items:
+                type: string
+        info:
+          type: object
+          properties:
+            gameCreation:
+              type: integer
+              format: int64
+            gameDuration:
+              type: integer
+              format: int64
+            gameId:
+              type: integer
+              format: int64
+            gameMode:
+              type: string
+            gameName:
+              type: string
+            gameType:
+              type: string
+            gameVersion:
+              type: string
+            mapId:
+              type: integer
+            participants:
+              type: array
+              items:
+                $ref: '#/components/schemas/ParticipantDTO'
+            platformId:
+              type: string
+            queueId:
+              type: integer
+            teams:
+              type: array
+              items:
+                type: object
+    ParticipantDTO:
+      type: object
+      properties:
+        puuid:
+          type: string
+        summonerName:
+          type: string
+        championId:
+          type: integer
+        championName:
+          type: string
+        kills:
+          type: integer
+        deaths:
+          type: integer
+        assists:
+          type: integer
+        totalDamageDealt:
+          type: integer
+          format: int64
+        goldEarned:
+          type: integer
+        win:
+          type: boolean
+        teamId:
+          type: integer
+        teamPosition:
+          type: string
+  securitySchemes:
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-Riot-Token

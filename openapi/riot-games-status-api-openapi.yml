@@ -1,0 +1,64 @@
+openapi: 3.0.3
+info:
+  title: Riot Games League of Legends Champion Status API
+  description: The Riot Games Developer API provides access to League of Legends game data including summoner profiles, champion mastery, ranked standings, match history, live spectator data, and tournament management. API keys are obtained through the Riot Developer Portal.
+  version: v4/v5
+  contact:
+    name: Riot Developer Portal
+    url: https://developer.riotgames.com/
+  termsOfService: https://developer.riotgames.com/policies/general
+servers:
+- url: https://na1.api.riotgames.com
+  description: North America
+- url: https://euw1.api.riotgames.com
+  description: Europe West
+- url: https://kr.api.riotgames.com
+  description: Korea
+- url: https://americas.api.riotgames.com
+  description: Americas (for account/match endpoints)
+tags:
+- name: Status
+  description: Platform status
+paths:
+  /lol/status/v4/platform-data:
+    get:
+      operationId: getPlatformStatus
+      summary: Get Platform Status
+      description: Get League of Legends platform status.
+      tags:
+      - Status
+      security:
+      - ApiKey: []
+      responses:
+        '200':
+          description: Platform status
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PlatformDataDTO'
+components:
+  schemas:
+    PlatformDataDTO:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        locales:
+          type: array
+          items:
+            type: string
+        maintenances:
+          type: array
+          items:
+            type: object
+        incidents:
+          type: array
+          items:
+            type: object
+  securitySchemes:
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-Riot-Token

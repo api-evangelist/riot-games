@@ -1,0 +1,112 @@
+openapi: 3.0.3
+info:
+  title: Riot Games League of Legends Champion Champion Mastery API
+  description: The Riot Games Developer API provides access to League of Legends game data including summoner profiles, champion mastery, ranked standings, match history, live spectator data, and tournament management. API keys are obtained through the Riot Developer Portal.
+  version: v4/v5
+  contact:
+    name: Riot Developer Portal
+    url: https://developer.riotgames.com/
+  termsOfService: https://developer.riotgames.com/policies/general
+servers:
+- url: https://na1.api.riotgames.com
+  description: North America
+- url: https://euw1.api.riotgames.com
+  description: Europe West
+- url: https://kr.api.riotgames.com
+  description: Korea
+- url: https://americas.api.riotgames.com
+  description: Americas (for account/match endpoints)
+tags:
+- name: Champion Mastery
+  description: Champion mastery data
+paths:
+  /lol/champion-mastery/v4/champion-masteries/by-puuid/{encryptedPUUID}:
+    get:
+      operationId: getChampionMasteryByPUUID
+      summary: Get Champion Mastery By PUUID
+      description: Get all champion mastery entries sorted by number of champion points descending.
+      tags:
+      - Champion Mastery
+      parameters:
+      - name: encryptedPUUID
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: count
+        in: query
+        description: Number of champion mastery entries to return
+        schema:
+          type: integer
+      security:
+      - ApiKey: []
+      responses:
+        '200':
+          description: Champion mastery list
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ChampionMasteryDTO'
+  /lol/champion-mastery/v4/champion-masteries/by-puuid/{encryptedPUUID}/by-champion/{championId}:
+    get:
+      operationId: getChampionMasteryByPUUIDAndChampion
+      summary: Get Champion Mastery By PUUID And Champion
+      description: Get a champion mastery by PUUID and champion ID.
+      tags:
+      - Champion Mastery
+      parameters:
+      - name: encryptedPUUID
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: championId
+        in: path
+        required: true
+        schema:
+          type: integer
+          format: int64
+      security:
+      - ApiKey: []
+      responses:
+        '200':
+          description: Champion mastery
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ChampionMasteryDTO'
+components:
+  schemas:
+    ChampionMasteryDTO:
+      type: object
+      properties:
+        puuid:
+          type: string
+        championId:
+          type: integer
+          format: int64
+        championLevel:
+          type: integer
+        championPoints:
+          type: integer
+          format: int64
+        lastPlayTime:
+          type: integer
+          format: int64
+        championPointsSinceLastLevel:
+          type: integer
+          format: int64
+        championPointsUntilNextLevel:
+          type: integer
+          format: int64
+        chestGranted:
+          type: boolean
+        tokensEarned:
+          type: integer
+  securitySchemes:
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-Riot-Token

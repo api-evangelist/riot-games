@@ -1,0 +1,161 @@
+openapi: 3.0.3
+info:
+  title: Riot Games League of Legends Champion Summoner API
+  description: The Riot Games Developer API provides access to League of Legends game data including summoner profiles, champion mastery, ranked standings, match history, live spectator data, and tournament management. API keys are obtained through the Riot Developer Portal.
+  version: v4/v5
+  contact:
+    name: Riot Developer Portal
+    url: https://developer.riotgames.com/
+  termsOfService: https://developer.riotgames.com/policies/general
+servers:
+- url: https://na1.api.riotgames.com
+  description: North America
+- url: https://euw1.api.riotgames.com
+  description: Europe West
+- url: https://kr.api.riotgames.com
+  description: Korea
+- url: https://americas.api.riotgames.com
+  description: Americas (for account/match endpoints)
+tags:
+- name: Summoner
+  description: Summoner profile operations
+paths:
+  /lol/summoner/v4/summoners/by-name/{summonerName}:
+    get:
+      operationId: getSummonerByName
+      summary: Get Summoner By Name
+      description: Get a summoner by summoner name. Deprecated - use Riot ID instead.
+      tags:
+      - Summoner
+      parameters:
+      - name: summonerName
+        in: path
+        required: true
+        schema:
+          type: string
+      security:
+      - ApiKey: []
+      responses:
+        '200':
+          description: Summoner data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SummonerDTO'
+        '403':
+          description: Forbidden
+        '404':
+          description: Not found
+  /lol/summoner/v4/summoners/by-puuid/{encryptedPUUID}:
+    get:
+      operationId: getSummonerByPUUID
+      summary: Get Summoner By PUUID
+      description: Get a summoner by PUUID.
+      tags:
+      - Summoner
+      parameters:
+      - name: encryptedPUUID
+        in: path
+        required: true
+        schema:
+          type: string
+      security:
+      - ApiKey: []
+      responses:
+        '200':
+          description: Summoner data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SummonerDTO'
+  /lol/summoner/v4/summoners/{encryptedSummonerId}:
+    get:
+      operationId: getSummonerById
+      summary: Get Summoner By ID
+      description: Get a summoner by encrypted summoner ID.
+      tags:
+      - Summoner
+      parameters:
+      - name: encryptedSummonerId
+        in: path
+        required: true
+        schema:
+          type: string
+      security:
+      - ApiKey: []
+      responses:
+        '200':
+          description: Summoner data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SummonerDTO'
+  /riot/account/v1/accounts/by-riot-id/{gameName}/{tagLine}:
+    get:
+      operationId: getAccountByRiotId
+      summary: Get Account By Riot ID
+      description: Get account by Riot ID (gameName + tagLine). Returns PUUID for use in other APIs.
+      tags:
+      - Summoner
+      parameters:
+      - name: gameName
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: tagLine
+        in: path
+        required: true
+        schema:
+          type: string
+      security:
+      - ApiKey: []
+      responses:
+        '200':
+          description: Account data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccountDTO'
+        '404':
+          description: Account not found
+components:
+  schemas:
+    AccountDTO:
+      type: object
+      properties:
+        puuid:
+          type: string
+          description: Encrypted PUUID for use in game-specific APIs
+        gameName:
+          type: string
+        tagLine:
+          type: string
+    SummonerDTO:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Encrypted summoner ID
+        accountId:
+          type: string
+          description: Encrypted account ID
+        puuid:
+          type: string
+          description: Encrypted PUUID
+        name:
+          type: string
+          description: Summoner name (deprecated)
+        profileIconId:
+          type: integer
+        revisionDate:
+          type: integer
+          format: int64
+        summonerLevel:
+          type: integer
+          format: int64
+  securitySchemes:
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-Riot-Token

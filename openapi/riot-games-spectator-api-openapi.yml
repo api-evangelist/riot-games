@@ -1,0 +1,129 @@
+openapi: 3.0.3
+info:
+  title: Riot Games League of Legends Champion Spectator API
+  description: The Riot Games Developer API provides access to League of Legends game data including summoner profiles, champion mastery, ranked standings, match history, live spectator data, and tournament management. API keys are obtained through the Riot Developer Portal.
+  version: v4/v5
+  contact:
+    name: Riot Developer Portal
+    url: https://developer.riotgames.com/
+  termsOfService: https://developer.riotgames.com/policies/general
+servers:
+- url: https://na1.api.riotgames.com
+  description: North America
+- url: https://euw1.api.riotgames.com
+  description: Europe West
+- url: https://kr.api.riotgames.com
+  description: Korea
+- url: https://americas.api.riotgames.com
+  description: Americas (for account/match endpoints)
+tags:
+- name: Spectator
+  description: Live game spectator data
+paths:
+  /lol/spectator/v5/active-games/by-summoner/{encryptedSummonerId}:
+    get:
+      operationId: getLiveGame
+      summary: Get Live Game
+      description: Get current game information for the given summoner ID.
+      tags:
+      - Spectator
+      parameters:
+      - name: encryptedSummonerId
+        in: path
+        required: true
+        schema:
+          type: string
+      security:
+      - ApiKey: []
+      responses:
+        '200':
+          description: Current game info
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CurrentGameInfoDTO'
+        '404':
+          description: No live game found
+  /lol/spectator/v5/featured-games:
+    get:
+      operationId: getFeaturedGames
+      summary: Get Featured Games
+      description: Get list of featured games.
+      tags:
+      - Spectator
+      security:
+      - ApiKey: []
+      responses:
+        '200':
+          description: Featured games list
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeaturedGamesDTO'
+components:
+  schemas:
+    CurrentGameParticipantDTO:
+      type: object
+      properties:
+        teamId:
+          type: integer
+          format: int64
+        spell1Id:
+          type: integer
+          format: int64
+        spell2Id:
+          type: integer
+          format: int64
+        championId:
+          type: integer
+          format: int64
+        profileIconId:
+          type: integer
+          format: int64
+        summonerName:
+          type: string
+        puuid:
+          type: string
+    CurrentGameInfoDTO:
+      type: object
+      properties:
+        gameId:
+          type: integer
+          format: int64
+        gameType:
+          type: string
+        gameStartTime:
+          type: integer
+          format: int64
+        mapId:
+          type: integer
+          format: int64
+        gameLength:
+          type: integer
+          format: int64
+        platformId:
+          type: string
+        gameMode:
+          type: string
+        gameQueueConfigId:
+          type: integer
+          format: int64
+        participants:
+          type: array
+          items:
+            $ref: '#/components/schemas/CurrentGameParticipantDTO'
+    FeaturedGamesDTO:
+      type: object
+      properties:
+        gameList:
+          type: array
+          items:
+            $ref: '#/components/schemas/CurrentGameInfoDTO'
+        clientRefreshInterval:
+          type: integer
+          format: int64
+  securitySchemes:
+    ApiKey:
+      type: apiKey
+      in: header
+      name: X-Riot-Token
