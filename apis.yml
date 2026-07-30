@@ -6,7 +6,20 @@ description: Riot Games provides a comprehensive developer platform for accessin
   ranked standings, champion mastery, live spectator data, tournament management,
   and player account data.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: paid
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Paid · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/riot-games.png
 tags:
 - Esports
 - Gaming
@@ -19,34 +32,11 @@ created: '2025-02-08'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-- aid: riot-games:league-of-legends-api
-  name: League of Legends API
-  description: API for accessing League of Legends game data including champion mastery,
-    clash tournaments, ranked league standings, match history, live spectator data,
-    summoner profiles, and tournament management. All APIs are currently version 4
-    or 5.
-  humanURL: https://developer.riotgames.com/apis
-  baseURL: https://na1.api.riotgames.com
-  tags:
-  - Champion Mastery
-  - Clash
-  - League of Legends
-  - Match History
-  - Ranked
-  - Summoner
-  - Tournaments
-  properties:
-  - type: Documentation
-    url: https://developer.riotgames.com/apis
-  - type: OpenAPI
-    url: https://raw.githubusercontent.com/api-evangelist/riot-games/refs/heads/main/openapi/riot-games-league-of-legends-openapi.yml
-  - url: graphql/riot-games-graphql.md
-    type: GraphQL
 - aid: riot-games:valorant-api
   name: VALORANT API
-  description: API for accessing VALORANT game data including match history, ranked
-    standings, content catalog, and status information. Covers both PC and console
-    platforms.
+  description: >-
+    API for accessing VALORANT game data including match history, ranked standings, content catalog, and
+    status information. Covers both PC and console platforms.
   humanURL: https://developer.riotgames.com/apis
   baseURL: https://na.api.riotgames.com
   tags:
@@ -59,9 +49,9 @@ apis:
     url: https://developer.riotgames.com/docs/valorant
 - aid: riot-games:teamfight-tactics-api
   name: Teamfight Tactics API
-  description: API for accessing Teamfight Tactics game data including match history,
-    ranked standings, summoner profiles, and live spectator data for the auto battler
-    game mode.
+  description: >-
+    API for accessing Teamfight Tactics game data including match history, ranked standings, summoner
+    profiles, and live spectator data for the auto battler game mode.
   humanURL: https://developer.riotgames.com/apis
   baseURL: https://na1.api.riotgames.com
   tags:
@@ -74,9 +64,9 @@ apis:
     url: https://developer.riotgames.com/apis
 - aid: riot-games:legends-of-runeterra-api
   name: Legends of Runeterra API
-  description: API for accessing Legends of Runeterra game data including player decks,
-    inventory, match history, and ranked standings. Requires Riot Sign-On (RSO) authentication
-    for player-specific data.
+  description: >-
+    API for accessing Legends of Runeterra game data including player decks, inventory, match history,
+    and ranked standings. Requires Riot Sign-On (RSO) authentication for player-specific data.
   humanURL: https://developer.riotgames.com/apis
   baseURL: https://americas.api.riotgames.com
   tags:
@@ -89,9 +79,9 @@ apis:
     url: https://developer.riotgames.com/docs/lor
 - aid: riot-games:account-api
   name: Riot Account API
-  description: Cross-game account API for resolving Riot IDs (gameName + tagLine)
-    to PUUIDs used across all Riot Games APIs. Supports account linking through Riot
-    Sign-On (RSO) OAuth 2.0 authentication.
+  description: >-
+    Cross-game account API for resolving Riot IDs (gameName + tagLine) to PUUIDs used across all Riot
+    Games APIs. Supports account linking through Riot Sign-On (RSO) OAuth 2.0 authentication.
   humanURL: https://developer.riotgames.com/apis
   baseURL: https://americas.api.riotgames.com
   tags:
@@ -104,9 +94,10 @@ apis:
     url: https://developer.riotgames.com/apis
 - aid: riot-games:data-dragon
   name: Riot Data Dragon
-  description: Static data and asset delivery service for Riot Games. Provides localized
-    game data for champions, items, summoner spells, runes, profile icons, and maps
-    in JSON format. Available in 28+ languages. Updated with each game patch.
+  description: >-
+    Static data and asset delivery service for Riot Games. Provides localized game data for champions,
+    items, summoner spells, runes, profile icons, and maps in JSON format. Available in 28+ languages.
+    Updated with each game patch.
   humanURL: https://developer.riotgames.com/docs/lol
   baseURL: https://ddragon.leagueoflegends.com/cdn
   tags:
@@ -117,6 +108,118 @@ apis:
   properties:
   - type: Documentation
     url: https://developer.riotgames.com/docs/lol
+- aid: riot-games:riot-games-champion-api
+  name: Riot Games Champion API
+  description: Free champion rotation
+  humanURL: https://developer.riotgames.com/apis
+  baseURL: https://na1.api.riotgames.com
+  tags:
+  - Champion
+  properties:
+  - type: OpenAPI
+    url: openapi/riot-games-champion-api-openapi.yml
+  - type: Documentation
+    url: https://developer.riotgames.com/apis
+  - type: GraphQL
+    url: graphql/riot-games-graphql.md
+- aid: riot-games:riot-games-champion-mastery-api
+  name: Riot Games Champion Mastery API
+  description: Champion mastery data
+  humanURL: https://developer.riotgames.com/apis
+  baseURL: https://na1.api.riotgames.com
+  tags:
+  - Champion Mastery
+  properties:
+  - type: OpenAPI
+    url: openapi/riot-games-champion-mastery-api-openapi.yml
+  - type: Documentation
+    url: https://developer.riotgames.com/apis
+  - type: GraphQL
+    url: graphql/riot-games-graphql.md
+- aid: riot-games:riot-games-clash-api
+  name: Riot Games Clash API
+  description: Clash tournament operations
+  humanURL: https://developer.riotgames.com/apis
+  baseURL: https://na1.api.riotgames.com
+  tags:
+  - Clash
+  properties:
+  - type: OpenAPI
+    url: openapi/riot-games-clash-api-openapi.yml
+  - type: Documentation
+    url: https://developer.riotgames.com/apis
+  - type: GraphQL
+    url: graphql/riot-games-graphql.md
+- aid: riot-games:riot-games-league-api
+  name: Riot Games League API
+  description: Ranked league standings
+  humanURL: https://developer.riotgames.com/apis
+  baseURL: https://na1.api.riotgames.com
+  tags:
+  - League
+  properties:
+  - type: OpenAPI
+    url: openapi/riot-games-league-api-openapi.yml
+  - type: Documentation
+    url: https://developer.riotgames.com/apis
+  - type: GraphQL
+    url: graphql/riot-games-graphql.md
+- aid: riot-games:riot-games-match-api
+  name: Riot Games Match API
+  description: Match history and details
+  humanURL: https://developer.riotgames.com/apis
+  baseURL: https://na1.api.riotgames.com
+  tags:
+  - Match
+  properties:
+  - type: OpenAPI
+    url: openapi/riot-games-match-api-openapi.yml
+  - type: Documentation
+    url: https://developer.riotgames.com/apis
+  - type: GraphQL
+    url: graphql/riot-games-graphql.md
+- aid: riot-games:riot-games-spectator-api
+  name: Riot Games Spectator API
+  description: Live game spectator data
+  humanURL: https://developer.riotgames.com/apis
+  baseURL: https://na1.api.riotgames.com
+  tags:
+  - Spectator
+  properties:
+  - type: OpenAPI
+    url: openapi/riot-games-spectator-api-openapi.yml
+  - type: Documentation
+    url: https://developer.riotgames.com/apis
+  - type: GraphQL
+    url: graphql/riot-games-graphql.md
+- aid: riot-games:riot-games-status-api
+  name: Riot Games Status API
+  description: Platform status
+  humanURL: https://developer.riotgames.com/apis
+  baseURL: https://na1.api.riotgames.com
+  tags:
+  - Status
+  properties:
+  - type: OpenAPI
+    url: openapi/riot-games-status-api-openapi.yml
+  - type: Documentation
+    url: https://developer.riotgames.com/apis
+  - type: GraphQL
+    url: graphql/riot-games-graphql.md
+- aid: riot-games:riot-games-summoner-api
+  name: Riot Games Summoner API
+  description: Summoner profile operations
+  humanURL: https://developer.riotgames.com/apis
+  baseURL: https://na1.api.riotgames.com
+  tags:
+  - Summoner
+  properties:
+  - type: OpenAPI
+    url: openapi/riot-games-summoner-api-openapi.yml
+  - type: Documentation
+    url: https://developer.riotgames.com/apis
+  - type: GraphQL
+    url: graphql/riot-games-graphql.md
 common:
 - type: AgenticAccess
   url: agentic-access/riot-games-agentic-access.yml
