@@ -1,0 +1,28 @@
+{
+  "provider": "riot-games",
+  "sources": [
+    "riot-games-champion-api-openapi.yml",
+    "riot-games-champion-mastery-api-openapi.yml",
+    "riot-games-clash-api-openapi.yml",
+    "riot-games-league-api-openapi.yml",
+    "riot-games-match-api-openapi.yml",
+    "riot-games-spectator-api-openapi.yml",
+    "riot-games-status-api-openapi.yml",
+    "riot-games-summoner-api-openapi.yml"
+  ],
+  "outputs": [
+    "riot-games-champion-api-openapi.yml",
+    "riot-games-champion-mastery-api-openapi.yml",
+    "riot-games-clash-api-openapi.yml",
+    "riot-games-league-api-openapi.yml",
+    "riot-games-match-api-openapi.yml",
+    "riot-games-spectator-api-openapi.yml",
+    "riot-games-status-api-openapi.yml",
+    "riot-games-summoner-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
