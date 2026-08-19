@@ -1,0 +1,59 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Riot Games League of Legends Champion Spectator API",
+    "version": "v4/v5"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Spectator",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Live Game",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.api.riotgames.com/lol/spectator/v5/active-games/by-summoner/:encryptedSummonerId",
+            "params": [
+              {
+                "name": "encryptedSummonerId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Riot-Token",
+              "value": "{{X-Riot-Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get current game information for the given summoner ID."
+        },
+        {
+          "info": {
+            "name": "Get Featured Games",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.api.riotgames.com/lol/spectator/v5/featured-games",
+            "auth": {
+              "type": "apikey",
+              "key": "X-Riot-Token",
+              "value": "{{X-Riot-Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get list of featured games."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

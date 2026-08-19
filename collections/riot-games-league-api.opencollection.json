@@ -1,0 +1,108 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Riot Games of Legends Champion League API",
+    "version": "v4/v5"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "League",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get League Entries By Summoner",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.api.riotgames.com/lol/league/v4/entries/by-summoner/:encryptedSummonerId",
+            "params": [
+              {
+                "name": "encryptedSummonerId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Riot-Token",
+              "value": "{{X-Riot-Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get league entries in all queues for a given summoner ID."
+        },
+        {
+          "info": {
+            "name": "Get League Entries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.api.riotgames.com/lol/league/v4/entries/:queue/:tier/:division",
+            "params": [
+              {
+                "name": "queue",
+                "value": "",
+                "type": "path",
+                "description": "Queue type (e.g., RANKED_SOLO_5x5)"
+              },
+              {
+                "name": "tier",
+                "value": "",
+                "type": "path",
+                "description": "Tier (e.g., GOLD)"
+              },
+              {
+                "name": "division",
+                "value": "",
+                "type": "path",
+                "description": "Division (e.g., I)"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Riot-Token",
+              "value": "{{X-Riot-Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get all the league entries for a given queue, tier, and division."
+        },
+        {
+          "info": {
+            "name": "Get Challenger League",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.api.riotgames.com/lol/league/v4/challengerleagues/by-queue/:queue",
+            "params": [
+              {
+                "name": "queue",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Riot-Token",
+              "value": "{{X-Riot-Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get the challenger league for a given queue."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

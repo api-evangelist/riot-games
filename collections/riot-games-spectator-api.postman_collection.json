@@ -1,0 +1,304 @@
+{
+  "item": [
+    {
+      "id": "522976b4-79e8-4579-8638-5e2797f9af28",
+      "name": "Spectator",
+      "description": {
+        "content": "Live game spectator data",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8f3771e6-30a7-476c-bf10-5ac3e8bfaa53",
+          "name": "Get Live Game",
+          "request": {
+            "name": "Get Live Game",
+            "description": {
+              "content": "Get current game information for the given summoner ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "lol",
+                "spectator",
+                "v5",
+                "active-games",
+                "by-summoner",
+                ":encryptedSummonerId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "encryptedSummonerId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Riot-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "b7e17fa1-282a-4a03-9cce-cc6717b59b86",
+              "name": "Current game info",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lol",
+                    "spectator",
+                    "v5",
+                    "active-games",
+                    "by-summoner",
+                    ":encryptedSummonerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "encryptedSummonerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Riot-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"gameId\": 4744,\n  \"gameType\": \"string\",\n  \"gameStartTime\": 8509,\n  \"mapId\": 2704,\n  \"gameLength\": 5213,\n  \"platformId\": \"string\",\n  \"gameMode\": \"string\",\n  \"gameQueueConfigId\": 3402,\n  \"participants\": [\n    {\n      \"teamId\": 8487,\n      \"spell1Id\": 6403,\n      \"spell2Id\": 601,\n      \"championId\": 1904,\n      \"profileIconId\": 848,\n      \"summonerName\": \"string\",\n      \"puuid\": \"string\"\n    },\n    {\n      \"teamId\": 8171,\n      \"spell1Id\": 5955,\n      \"spell2Id\": 6221,\n      \"championId\": 6945,\n      \"profileIconId\": 5081,\n      \"summonerName\": \"string\",\n      \"puuid\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1795ffa9-d4db-4d61-9a03-d1b880141fb0",
+              "name": "No live game found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lol",
+                    "spectator",
+                    "v5",
+                    "active-games",
+                    "by-summoner",
+                    ":encryptedSummonerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "encryptedSummonerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Riot-Token",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f17b4d94-43f9-4509-ba02-8c44487ff79d",
+          "name": "Get Featured Games",
+          "request": {
+            "name": "Get Featured Games",
+            "description": {
+              "content": "Get list of featured games.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "lol",
+                "spectator",
+                "v5",
+                "featured-games"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Riot-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "a62b5616-e7fb-4a69-9818-72e2eba26fc0",
+              "name": "Featured games list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lol",
+                    "spectator",
+                    "v5",
+                    "featured-games"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Riot-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"gameList\": [\n    {\n      \"gameId\": 214,\n      \"gameType\": \"string\",\n      \"gameStartTime\": 8014,\n      \"mapId\": 5449,\n      \"gameLength\": 6648,\n      \"platformId\": \"string\",\n      \"gameMode\": \"string\",\n      \"gameQueueConfigId\": 1042,\n      \"participants\": [\n        {\n          \"teamId\": 753,\n          \"spell1Id\": 4130,\n          \"spell2Id\": 9036,\n          \"championId\": 8916,\n          \"profileIconId\": 1384,\n          \"summonerName\": \"string\",\n          \"puuid\": \"string\"\n        },\n        {\n          \"teamId\": 6912,\n          \"spell1Id\": 9163,\n          \"spell2Id\": 200,\n          \"championId\": 8137,\n          \"profileIconId\": 9247,\n          \"summonerName\": \"string\",\n          \"puuid\": \"string\"\n        }\n      ]\n    },\n    {\n      \"gameId\": 9106,\n      \"gameType\": \"string\",\n      \"gameStartTime\": 8903,\n      \"mapId\": 5271,\n      \"gameLength\": 5472,\n      \"platformId\": \"string\",\n      \"gameMode\": \"string\",\n      \"gameQueueConfigId\": 7716,\n      \"participants\": [\n        {\n          \"teamId\": 4888,\n          \"spell1Id\": 1050,\n          \"spell2Id\": 7867,\n          \"championId\": 9725,\n          \"profileIconId\": 5147,\n          \"summonerName\": \"string\",\n          \"puuid\": \"string\"\n        },\n        {\n          \"teamId\": 5127,\n          \"spell1Id\": 5960,\n          \"spell2Id\": 2797,\n          \"championId\": 5822,\n          \"profileIconId\": 5892,\n          \"summonerName\": \"string\",\n          \"puuid\": \"string\"\n        }\n      ]\n    }\n  ],\n  \"clientRefreshInterval\": 8811\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://na1.api.riotgames.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7a72aa87-20b3-4c92-92df-2d6d9cde482c",
+    "name": "Riot Games League of Legends Champion Spectator API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Riot Games Developer API provides access to League of Legends game data including summoner profiles, champion mastery, ranked standings, match history, live spectator data, and tournament management. API keys are obtained through the Riot Developer Portal.\n\nContact Support:\n Name: Riot Developer Portal",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Riot Games League of Legends Champion Summoner API",
+    "version": "v4/v5"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Summoner",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Summoner By Name",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/:summonerName",
+            "params": [
+              {
+                "name": "summonerName",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Riot-Token",
+              "value": "{{X-Riot-Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get a summoner by summoner name. Deprecated - use Riot ID instead."
+        },
+        {
+          "info": {
+            "name": "Get Summoner By PUUID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-puuid/:encryptedPUUID",
+            "params": [
+              {
+                "name": "encryptedPUUID",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Riot-Token",
+              "value": "{{X-Riot-Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get a summoner by PUUID."
+        },
+        {
+          "info": {
+            "name": "Get Summoner By ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.api.riotgames.com/lol/summoner/v4/summoners/:encryptedSummonerId",
+            "params": [
+              {
+                "name": "encryptedSummonerId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Riot-Token",
+              "value": "{{X-Riot-Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get a summoner by encrypted summoner ID."
+        },
+        {
+          "info": {
+            "name": "Get Account By Riot ID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.api.riotgames.com/riot/account/v1/accounts/by-riot-id/:gameName/:tagLine",
+            "params": [
+              {
+                "name": "gameName",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "tagLine",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Riot-Token",
+              "value": "{{X-Riot-Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get account by Riot ID (gameName + tagLine). Returns PUUID for use in other APIs."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

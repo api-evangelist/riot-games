@@ -1,0 +1,42 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Riot Games League of Legends Champion Clash API",
+    "version": "v4/v5"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Clash",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Clash Players By PUUID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.api.riotgames.com/lol/clash/v1/players/by-puuid/:puuid",
+            "params": [
+              {
+                "name": "puuid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Riot-Token",
+              "value": "{{X-Riot-Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get players in Clash by PUUID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

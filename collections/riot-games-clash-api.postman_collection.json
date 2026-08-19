@@ -1,0 +1,152 @@
+{
+  "item": [
+    {
+      "id": "61d979d3-a9eb-4a6f-876f-27bcc049c2c9",
+      "name": "Clash",
+      "description": {
+        "content": "Clash tournament operations",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3369dab9-bb91-49b7-85b0-3624acf6a8ad",
+          "name": "Get Clash Players By PUUID",
+          "request": {
+            "name": "Get Clash Players By PUUID",
+            "description": {
+              "content": "Get players in Clash by PUUID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "lol",
+                "clash",
+                "v1",
+                "players",
+                "by-puuid",
+                ":puuid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "puuid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Riot-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "cb96c748-cde1-4fdd-ade7-ab075dc9331c",
+              "name": "Clash player list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lol",
+                    "clash",
+                    "v1",
+                    "players",
+                    "by-puuid",
+                    ":puuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "puuid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Riot-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"summonerId\": \"string\",\n    \"teamId\": \"string\",\n    \"position\": \"string\",\n    \"role\": \"string\"\n  },\n  {\n    \"summonerId\": \"string\",\n    \"teamId\": \"string\",\n    \"position\": \"string\",\n    \"role\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://na1.api.riotgames.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1890c23f-03d0-47ef-83b5-20c1a27d5c75",
+    "name": "Riot Games League of Legends Champion Clash API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Riot Games Developer API provides access to League of Legends game data including summoner profiles, champion mastery, ranked standings, match history, live spectator data, and tournament management. API keys are obtained through the Riot Developer Portal.\n\nContact Support:\n Name: Riot Developer Portal",
+      "type": "text/plain"
+    }
+  }
+}

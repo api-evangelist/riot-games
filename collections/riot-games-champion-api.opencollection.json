@@ -1,0 +1,35 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Riot Games League of Legends Champion API",
+    "version": "v4/v5"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Champion",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Champion Rotations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.api.riotgames.com/lol/champion/v3/champion-rotations",
+            "auth": {
+              "type": "apikey",
+              "key": "X-Riot-Token",
+              "value": "{{X-Riot-Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get the current free champion rotation and weekly free champion rotation."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

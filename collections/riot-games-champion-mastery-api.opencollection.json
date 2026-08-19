@@ -1,0 +1,77 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Riot Games League of Legends Champion Champion Mastery API",
+    "version": "v4/v5"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Champion Mastery",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Champion Mastery By PUUID",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-puuid/:encryptedPUUID",
+            "params": [
+              {
+                "name": "encryptedPUUID",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "count",
+                "value": "",
+                "type": "query",
+                "description": "Number of champion mastery entries to return"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Riot-Token",
+              "value": "{{X-Riot-Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get all champion mastery entries sorted by number of champion points descending."
+        },
+        {
+          "info": {
+            "name": "Get Champion Mastery By PUUID And Champion",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://na1.api.riotgames.com/lol/champion-mastery/v4/champion-masteries/by-puuid/:encryptedPUUID/by-champion/:championId",
+            "params": [
+              {
+                "name": "encryptedPUUID",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "championId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "auth": {
+              "type": "apikey",
+              "key": "X-Riot-Token",
+              "value": "{{X-Riot-Token}}",
+              "placement": "header"
+            }
+          },
+          "docs": "Get a champion mastery by PUUID and champion ID."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,132 @@
+{
+  "item": [
+    {
+      "id": "f6ca9286-7afe-4094-956d-08ca4efda166",
+      "name": "Status",
+      "description": {
+        "content": "Platform status",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "43cddeef-12ea-4dd5-8373-923701093ba3",
+          "name": "Get Platform Status",
+          "request": {
+            "name": "Get Platform Status",
+            "description": {
+              "content": "Get League of Legends platform status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "lol",
+                "status",
+                "v4",
+                "platform-data"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Riot-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "06b7b0a4-a141-44c1-a8f4-84df95459832",
+              "name": "Platform status",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lol",
+                    "status",
+                    "v4",
+                    "platform-data"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Riot-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"locales\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://na1.api.riotgames.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "367dbf59-4a2a-4837-bbd2-f6db73329350",
+    "name": "Riot Games League of Legends Champion Status API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Riot Games Developer API provides access to League of Legends game data including summoner profiles, champion mastery, ranked standings, match history, live spectator data, and tournament management. API keys are obtained through the Riot Developer Portal.\n\nContact Support:\n Name: Riot Developer Portal",
+      "type": "text/plain"
+    }
+  }
+}

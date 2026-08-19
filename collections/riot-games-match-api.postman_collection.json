@@ -1,0 +1,434 @@
+{
+  "item": [
+    {
+      "id": "25a2f5a5-91ce-4fb2-badf-f2fadc145d7f",
+      "name": "Match",
+      "description": {
+        "content": "Match history and details",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "73546482-8c82-40ca-9417-7e3c78a06b12",
+          "name": "Get Match IDs By PUUID",
+          "request": {
+            "name": "Get Match IDs By PUUID",
+            "description": {
+              "content": "Get a list of match IDs by PUUID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "lol",
+                "match",
+                "v5",
+                "matches",
+                "by-puuid",
+                ":puuid",
+                "ids"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "queue",
+                  "value": "<integer>",
+                  "description": "Filter by queue ID"
+                },
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "<string>",
+                  "description": "Filter by game type"
+                },
+                {
+                  "disabled": false,
+                  "key": "start",
+                  "value": "0",
+                  "description": "Start index for pagination"
+                },
+                {
+                  "disabled": false,
+                  "key": "count",
+                  "value": "20",
+                  "description": "Number of match IDs to return (max 100)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "puuid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Riot-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "3cfb0467-3535-46f4-b563-f2f7f2c72f5b",
+              "name": "List of match IDs",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lol",
+                    "match",
+                    "v5",
+                    "matches",
+                    "by-puuid",
+                    ":puuid",
+                    "ids"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "queue",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "type",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "start",
+                      "value": "0"
+                    },
+                    {
+                      "key": "count",
+                      "value": "20"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "puuid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Riot-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  \"string\",\n  \"string\"\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "139afd05-febb-495d-a0c5-33556fdfd327",
+          "name": "Get Match",
+          "request": {
+            "name": "Get Match",
+            "description": {
+              "content": "Get match by match ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "lol",
+                "match",
+                "v5",
+                "matches",
+                ":matchId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "matchId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Riot-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "682c11be-24d9-4309-859d-49df1708cf68",
+              "name": "Match data",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lol",
+                    "match",
+                    "v5",
+                    "matches",
+                    ":matchId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "matchId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Riot-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"dataVersion\": \"string\",\n    \"matchId\": \"string\",\n    \"participants\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"info\": {\n    \"gameCreation\": 8414,\n    \"gameDuration\": 6520,\n    \"gameId\": 5406,\n    \"gameMode\": \"string\",\n    \"gameName\": \"string\",\n    \"gameType\": \"string\",\n    \"gameVersion\": \"string\",\n    \"mapId\": 8887,\n    \"participants\": [\n      {\n        \"puuid\": \"string\",\n        \"summonerName\": \"string\",\n        \"championId\": 1049,\n        \"championName\": \"string\",\n        \"kills\": 7923,\n        \"deaths\": 1378,\n        \"assists\": 6300,\n        \"totalDamageDealt\": 3151,\n        \"goldEarned\": 5983,\n        \"win\": true,\n        \"teamId\": 1132,\n        \"teamPosition\": \"string\"\n      },\n      {\n        \"puuid\": \"string\",\n        \"summonerName\": \"string\",\n        \"championId\": 6594,\n        \"championName\": \"string\",\n        \"kills\": 3929,\n        \"deaths\": 9822,\n        \"assists\": 5542,\n        \"totalDamageDealt\": 8617,\n        \"goldEarned\": 6752,\n        \"win\": false,\n        \"teamId\": 6441,\n        \"teamPosition\": \"string\"\n      }\n    ],\n    \"platformId\": \"string\",\n    \"queueId\": 7805\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "08de98f0-6190-4337-829b-ecfcebbc9fc5",
+          "name": "Get Match Timeline",
+          "request": {
+            "name": "Get Match Timeline",
+            "description": {
+              "content": "Get match timeline by match ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "lol",
+                "match",
+                "v5",
+                "matches",
+                ":matchId",
+                "timeline"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "matchId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Riot-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "5f61b975-d5fa-4b8c-92c0-52bdaf7be37e",
+              "name": "Match timeline",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lol",
+                    "match",
+                    "v5",
+                    "matches",
+                    ":matchId",
+                    "timeline"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "matchId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Riot-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"metadata\": {\n    \"matchId\": \"string\"\n  },\n  \"info\": {\n    \"frameInterval\": 4966\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://na1.api.riotgames.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "7552b9fe-e251-4134-b3dd-e9f05edcedbe",
+    "name": "Riot Games League of Legends Champion Match API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Riot Games Developer API provides access to League of Legends game data including summoner profiles, champion mastery, ranked standings, match history, live spectator data, and tournament management. API keys are obtained through the Riot Developer Portal.\n\nContact Support:\n Name: Riot Developer Portal",
+      "type": "text/plain"
+    }
+  }
+}

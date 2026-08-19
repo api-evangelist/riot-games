@@ -1,0 +1,302 @@
+{
+  "item": [
+    {
+      "id": "a67d966d-cef8-4125-b207-0d75641a48a6",
+      "name": "Champion Mastery",
+      "description": {
+        "content": "Champion mastery data",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d43ddeca-88a5-4fd0-9ab7-8dd40f80f34d",
+          "name": "Get Champion Mastery By PUUID",
+          "request": {
+            "name": "Get Champion Mastery By PUUID",
+            "description": {
+              "content": "Get all champion mastery entries sorted by number of champion points descending.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "lol",
+                "champion-mastery",
+                "v4",
+                "champion-masteries",
+                "by-puuid",
+                ":encryptedPUUID"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "count",
+                  "value": "<integer>",
+                  "description": "Number of champion mastery entries to return"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "encryptedPUUID",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Riot-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "dd47fe6d-0300-4233-8eb4-729827cb3d56",
+              "name": "Champion mastery list",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lol",
+                    "champion-mastery",
+                    "v4",
+                    "champion-masteries",
+                    "by-puuid",
+                    ":encryptedPUUID"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "count",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "encryptedPUUID",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Riot-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"puuid\": \"string\",\n    \"championId\": 4649,\n    \"championLevel\": 7489,\n    \"championPoints\": 2126,\n    \"lastPlayTime\": 3785,\n    \"championPointsSinceLastLevel\": 6576,\n    \"championPointsUntilNextLevel\": 7320,\n    \"chestGranted\": false,\n    \"tokensEarned\": 8665\n  },\n  {\n    \"puuid\": \"string\",\n    \"championId\": 6167,\n    \"championLevel\": 6281,\n    \"championPoints\": 8180,\n    \"lastPlayTime\": 7139,\n    \"championPointsSinceLastLevel\": 1238,\n    \"championPointsUntilNextLevel\": 3990,\n    \"chestGranted\": false,\n    \"tokensEarned\": 6214\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c33c2c63-8cac-4560-b87b-63dbaac64860",
+          "name": "Get Champion Mastery By PUUID And Champion",
+          "request": {
+            "name": "Get Champion Mastery By PUUID And Champion",
+            "description": {
+              "content": "Get a champion mastery by PUUID and champion ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "lol",
+                "champion-mastery",
+                "v4",
+                "champion-masteries",
+                "by-puuid",
+                ":encryptedPUUID",
+                "by-champion",
+                ":championId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "encryptedPUUID",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<long>",
+                  "key": "championId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Riot-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "542b9915-5e97-40cf-93b8-d8359123cc00",
+              "name": "Champion mastery",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lol",
+                    "champion-mastery",
+                    "v4",
+                    "champion-masteries",
+                    "by-puuid",
+                    ":encryptedPUUID",
+                    "by-champion",
+                    ":championId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "encryptedPUUID",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<long>",
+                      "key": "championId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Riot-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"puuid\": \"string\",\n  \"championId\": 9810,\n  \"championLevel\": 3102,\n  \"championPoints\": 3160,\n  \"lastPlayTime\": 4768,\n  \"championPointsSinceLastLevel\": 513,\n  \"championPointsUntilNextLevel\": 1807,\n  \"chestGranted\": false,\n  \"tokensEarned\": 7516\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://na1.api.riotgames.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "80bc79e4-6bec-48fe-a982-4083dfd55424",
+    "name": "Riot Games League of Legends Champion Champion Mastery API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Riot Games Developer API provides access to League of Legends game data including summoner profiles, champion mastery, ranked standings, match history, live spectator data, and tournament management. API keys are obtained through the Riot Developer Portal.\n\nContact Support:\n Name: Riot Developer Portal",
+      "type": "text/plain"
+    }
+  }
+}

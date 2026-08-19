@@ -1,0 +1,433 @@
+{
+  "item": [
+    {
+      "id": "1318ed77-7c7e-45b9-b015-1b5a745fbb4e",
+      "name": "League",
+      "description": {
+        "content": "Ranked league standings",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b3bff17f-e051-4d3d-85c5-de9236c3a6c0",
+          "name": "Get League Entries By Summoner",
+          "request": {
+            "name": "Get League Entries By Summoner",
+            "description": {
+              "content": "Get league entries in all queues for a given summoner ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "lol",
+                "league",
+                "v4",
+                "entries",
+                "by-summoner",
+                ":encryptedSummonerId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "encryptedSummonerId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Riot-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c6b73ee8-fb67-4a85-b24a-1f0b6cf34fbe",
+              "name": "League entries",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lol",
+                    "league",
+                    "v4",
+                    "entries",
+                    "by-summoner",
+                    ":encryptedSummonerId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "encryptedSummonerId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Riot-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"leagueId\": \"string\",\n    \"summonerId\": \"string\",\n    \"summonerName\": \"string\",\n    \"queueType\": \"string\",\n    \"tier\": \"string\",\n    \"rank\": \"string\",\n    \"leaguePoints\": 3076,\n    \"wins\": 288,\n    \"losses\": 4374,\n    \"hotStreak\": true,\n    \"veteran\": true,\n    \"freshBlood\": false,\n    \"inactive\": true\n  },\n  {\n    \"leagueId\": \"string\",\n    \"summonerId\": \"string\",\n    \"summonerName\": \"string\",\n    \"queueType\": \"string\",\n    \"tier\": \"string\",\n    \"rank\": \"string\",\n    \"leaguePoints\": 2591,\n    \"wins\": 188,\n    \"losses\": 7578,\n    \"hotStreak\": false,\n    \"veteran\": false,\n    \"freshBlood\": true,\n    \"inactive\": true\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7bea303d-5fb8-4a3f-a926-8736e2e2be03",
+          "name": "Get League Entries",
+          "request": {
+            "name": "Get League Entries",
+            "description": {
+              "content": "Get all the league entries for a given queue, tier, and division.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "lol",
+                "league",
+                "v4",
+                "entries",
+                ":queue",
+                ":tier",
+                ":division"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "queue",
+                  "description": "(Required) Queue type (e.g., RANKED_SOLO_5x5)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "tier",
+                  "description": "(Required) Tier (e.g., GOLD)"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "division",
+                  "description": "(Required) Division (e.g., I)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Riot-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "77526d45-f7e2-4601-a625-9513d4b32096",
+              "name": "League entries",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lol",
+                    "league",
+                    "v4",
+                    "entries",
+                    ":queue",
+                    ":tier",
+                    ":division"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "queue",
+                      "description": "(Required) Queue type (e.g., RANKED_SOLO_5x5)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "tier",
+                      "description": "(Required) Tier (e.g., GOLD)"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "division",
+                      "description": "(Required) Division (e.g., I)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Riot-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"leagueId\": \"string\",\n    \"summonerId\": \"string\",\n    \"summonerName\": \"string\",\n    \"queueType\": \"string\",\n    \"tier\": \"string\",\n    \"rank\": \"string\",\n    \"leaguePoints\": 3076,\n    \"wins\": 288,\n    \"losses\": 4374,\n    \"hotStreak\": true,\n    \"veteran\": true,\n    \"freshBlood\": false,\n    \"inactive\": true\n  },\n  {\n    \"leagueId\": \"string\",\n    \"summonerId\": \"string\",\n    \"summonerName\": \"string\",\n    \"queueType\": \"string\",\n    \"tier\": \"string\",\n    \"rank\": \"string\",\n    \"leaguePoints\": 2591,\n    \"wins\": 188,\n    \"losses\": 7578,\n    \"hotStreak\": false,\n    \"veteran\": false,\n    \"freshBlood\": true,\n    \"inactive\": true\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7752fdfe-d4ab-4a53-8091-6ad2018f5f47",
+          "name": "Get Challenger League",
+          "request": {
+            "name": "Get Challenger League",
+            "description": {
+              "content": "Get the challenger league for a given queue.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "lol",
+                "league",
+                "v4",
+                "challengerleagues",
+                "by-queue",
+                ":queue"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "queue",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "apikey",
+              "apikey": [
+                {
+                  "key": "key",
+                  "value": "X-Riot-Token"
+                },
+                {
+                  "key": "value",
+                  "value": "{{apiKey}}"
+                },
+                {
+                  "key": "in",
+                  "value": "header"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "39c1eabf-9552-4fe0-b351-4a3fe12509d0",
+              "name": "Challenger league",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lol",
+                    "league",
+                    "v4",
+                    "challengerleagues",
+                    "by-queue",
+                    ":queue"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "queue",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Riot-Token",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"leagueId\": \"string\",\n  \"entries\": [\n    {\n      \"leagueId\": \"string\",\n      \"summonerId\": \"string\",\n      \"summonerName\": \"string\",\n      \"queueType\": \"string\",\n      \"tier\": \"string\",\n      \"rank\": \"string\",\n      \"leaguePoints\": 9971,\n      \"wins\": 3300,\n      \"losses\": 3789,\n      \"hotStreak\": true,\n      \"veteran\": true,\n      \"freshBlood\": false,\n      \"inactive\": false\n    },\n    {\n      \"leagueId\": \"string\",\n      \"summonerId\": \"string\",\n      \"summonerName\": \"string\",\n      \"queueType\": \"string\",\n      \"tier\": \"string\",\n      \"rank\": \"string\",\n      \"leaguePoints\": 5534,\n      \"wins\": 842,\n      \"losses\": 3993,\n      \"hotStreak\": true,\n      \"veteran\": true,\n      \"freshBlood\": false,\n      \"inactive\": false\n    }\n  ],\n  \"tier\": \"string\",\n  \"name\": \"string\",\n  \"queue\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://na1.api.riotgames.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c82267bc-203a-4788-8688-2fbdc060df87",
+    "name": "Riot Games of Legends Champion League API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Riot Games Developer API provides access to League of Legends game data including summoner profiles, champion mastery, ranked standings, match history, live spectator data, and tournament management. API keys are obtained through the Riot Developer Portal.\n\nContact Support:\n Name: Riot Developer Portal",
+      "type": "text/plain"
+    }
+  }
+}
