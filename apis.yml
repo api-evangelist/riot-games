@@ -30,7 +30,7 @@ tags:
 url: https://raw.githubusercontent.com/api-evangelist/riot-games/refs/heads/main/apis.yml
 created: '2025-02-08'
 modified: '2026-05-19'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: riot-games:valorant-api
   name: VALORANT API
