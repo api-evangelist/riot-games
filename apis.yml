@@ -103,6 +103,11 @@ apis:
   tags:
   - Champions
   - Data Dragon
+  - Item
+  - Static Data
+  tags_raw:
+  - Champions
+  - Data Dragon
   - Items
   - Static Data
   properties:
