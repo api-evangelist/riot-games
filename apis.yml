@@ -6,6 +6,18 @@ description: Riot Games provides a comprehensive developer platform for accessin
   ranked standings, champion mastery, live spectator data, tournament management,
   and player account data.
 type: Index
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: paid
   onboarding: self-serve
