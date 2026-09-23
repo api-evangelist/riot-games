@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Riot Games League of Legends Champion Spectator API
+  title: Riot Games League of Legends Spectator API
   description: The Riot Games Developer API provides access to League of Legends game data including summoner profiles, champion mastery, ranked standings, match history, live spectator data, and tournament management. API keys are obtained through the Riot Developer Portal.
   version: v4/v5
   contact:
@@ -62,28 +62,16 @@ paths:
                 $ref: '#/components/schemas/FeaturedGamesDTO'
 components:
   schemas:
-    CurrentGameParticipantDTO:
+    FeaturedGamesDTO:
       type: object
       properties:
-        teamId:
+        gameList:
+          type: array
+          items:
+            $ref: '#/components/schemas/CurrentGameInfoDTO'
+        clientRefreshInterval:
           type: integer
           format: int64
-        spell1Id:
-          type: integer
-          format: int64
-        spell2Id:
-          type: integer
-          format: int64
-        championId:
-          type: integer
-          format: int64
-        profileIconId:
-          type: integer
-          format: int64
-        summonerName:
-          type: string
-        puuid:
-          type: string
     CurrentGameInfoDTO:
       type: object
       properties:
@@ -112,16 +100,28 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CurrentGameParticipantDTO'
-    FeaturedGamesDTO:
+    CurrentGameParticipantDTO:
       type: object
       properties:
-        gameList:
-          type: array
-          items:
-            $ref: '#/components/schemas/CurrentGameInfoDTO'
-        clientRefreshInterval:
+        teamId:
           type: integer
           format: int64
+        spell1Id:
+          type: integer
+          format: int64
+        spell2Id:
+          type: integer
+          format: int64
+        championId:
+          type: integer
+          format: int64
+        profileIconId:
+          type: integer
+          format: int64
+        summonerName:
+          type: string
+        puuid:
+          type: string
   securitySchemes:
     ApiKey:
       type: apiKey
