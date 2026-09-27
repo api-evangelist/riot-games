@@ -62,16 +62,6 @@ paths:
                 $ref: '#/components/schemas/FeaturedGamesDTO'
 components:
   schemas:
-    FeaturedGamesDTO:
-      type: object
-      properties:
-        gameList:
-          type: array
-          items:
-            $ref: '#/components/schemas/CurrentGameInfoDTO'
-        clientRefreshInterval:
-          type: integer
-          format: int64
     CurrentGameInfoDTO:
       type: object
       properties:
@@ -122,6 +112,16 @@ components:
           type: string
         puuid:
           type: string
+    FeaturedGamesDTO:
+      type: object
+      properties:
+        gameList:
+          type: array
+          items:
+            $ref: '#/components/schemas/CurrentGameInfoDTO'
+        clientRefreshInterval:
+          type: integer
+          format: int64
   securitySchemes:
     ApiKey:
       type: apiKey

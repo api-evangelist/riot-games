@@ -113,6 +113,23 @@ paths:
                 $ref: '#/components/schemas/MatchTimelineDTO'
 components:
   schemas:
+    MatchTimelineDTO:
+      type: object
+      properties:
+        metadata:
+          type: object
+          properties:
+            matchId:
+              type: string
+        info:
+          type: object
+          properties:
+            frameInterval:
+              type: integer
+            frames:
+              type: array
+              items:
+                type: object
     MatchDTO:
       type: object
       properties:
@@ -189,23 +206,6 @@ components:
           type: integer
         teamPosition:
           type: string
-    MatchTimelineDTO:
-      type: object
-      properties:
-        metadata:
-          type: object
-          properties:
-            matchId:
-              type: string
-        info:
-          type: object
-          properties:
-            frameInterval:
-              type: integer
-            frames:
-              type: array
-              items:
-                type: object
   securitySchemes:
     ApiKey:
       type: apiKey
