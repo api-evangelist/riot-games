@@ -121,6 +121,16 @@ paths:
           description: Account not found
 components:
   schemas:
+    AccountDTO:
+      type: object
+      properties:
+        puuid:
+          type: string
+          description: Encrypted PUUID for use in game-specific APIs
+        gameName:
+          type: string
+        tagLine:
+          type: string
     SummonerDTO:
       type: object
       properties:
@@ -144,16 +154,6 @@ components:
         summonerLevel:
           type: integer
           format: int64
-    AccountDTO:
-      type: object
-      properties:
-        puuid:
-          type: string
-          description: Encrypted PUUID for use in game-specific APIs
-        gameName:
-          type: string
-        tagLine:
-          type: string
   securitySchemes:
     ApiKey:
       type: apiKey

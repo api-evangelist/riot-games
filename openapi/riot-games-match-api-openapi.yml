@@ -113,6 +113,34 @@ paths:
                 $ref: '#/components/schemas/MatchTimelineDTO'
 components:
   schemas:
+    ParticipantDTO:
+      type: object
+      properties:
+        puuid:
+          type: string
+        summonerName:
+          type: string
+        championId:
+          type: integer
+        championName:
+          type: string
+        kills:
+          type: integer
+        deaths:
+          type: integer
+        assists:
+          type: integer
+        totalDamageDealt:
+          type: integer
+          format: int64
+        goldEarned:
+          type: integer
+        win:
+          type: boolean
+        teamId:
+          type: integer
+        teamPosition:
+          type: string
     MatchTimelineDTO:
       type: object
       properties:
@@ -178,34 +206,6 @@ components:
               type: array
               items:
                 type: object
-    ParticipantDTO:
-      type: object
-      properties:
-        puuid:
-          type: string
-        summonerName:
-          type: string
-        championId:
-          type: integer
-        championName:
-          type: string
-        kills:
-          type: integer
-        deaths:
-          type: integer
-        assists:
-          type: integer
-        totalDamageDealt:
-          type: integer
-          format: int64
-        goldEarned:
-          type: integer
-        win:
-          type: boolean
-        teamId:
-          type: integer
-        teamPosition:
-          type: string
   securitySchemes:
     ApiKey:
       type: apiKey
