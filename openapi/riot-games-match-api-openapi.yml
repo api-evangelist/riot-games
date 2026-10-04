@@ -113,51 +113,6 @@ paths:
                 $ref: '#/components/schemas/MatchTimelineDTO'
 components:
   schemas:
-    ParticipantDTO:
-      type: object
-      properties:
-        puuid:
-          type: string
-        summonerName:
-          type: string
-        championId:
-          type: integer
-        championName:
-          type: string
-        kills:
-          type: integer
-        deaths:
-          type: integer
-        assists:
-          type: integer
-        totalDamageDealt:
-          type: integer
-          format: int64
-        goldEarned:
-          type: integer
-        win:
-          type: boolean
-        teamId:
-          type: integer
-        teamPosition:
-          type: string
-    MatchTimelineDTO:
-      type: object
-      properties:
-        metadata:
-          type: object
-          properties:
-            matchId:
-              type: string
-        info:
-          type: object
-          properties:
-            frameInterval:
-              type: integer
-            frames:
-              type: array
-              items:
-                type: object
     MatchDTO:
       type: object
       properties:
@@ -203,6 +158,51 @@ components:
             queueId:
               type: integer
             teams:
+              type: array
+              items:
+                type: object
+    ParticipantDTO:
+      type: object
+      properties:
+        puuid:
+          type: string
+        summonerName:
+          type: string
+        championId:
+          type: integer
+        championName:
+          type: string
+        kills:
+          type: integer
+        deaths:
+          type: integer
+        assists:
+          type: integer
+        totalDamageDealt:
+          type: integer
+          format: int64
+        goldEarned:
+          type: integer
+        win:
+          type: boolean
+        teamId:
+          type: integer
+        teamPosition:
+          type: string
+    MatchTimelineDTO:
+      type: object
+      properties:
+        metadata:
+          type: object
+          properties:
+            matchId:
+              type: string
+        info:
+          type: object
+          properties:
+            frameInterval:
+              type: integer
+            frames:
               type: array
               items:
                 type: object

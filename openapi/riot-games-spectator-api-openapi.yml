@@ -62,16 +62,6 @@ paths:
                 $ref: '#/components/schemas/FeaturedGamesDTO'
 components:
   schemas:
-    FeaturedGamesDTO:
-      type: object
-      properties:
-        gameList:
-          type: array
-          items:
-            $ref: '#/components/schemas/CurrentGameInfoDTO'
-        clientRefreshInterval:
-          type: integer
-          format: int64
     CurrentGameInfoDTO:
       type: object
       properties:
@@ -100,6 +90,16 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CurrentGameParticipantDTO'
+    FeaturedGamesDTO:
+      type: object
+      properties:
+        gameList:
+          type: array
+          items:
+            $ref: '#/components/schemas/CurrentGameInfoDTO'
+        clientRefreshInterval:
+          type: integer
+          format: int64
     CurrentGameParticipantDTO:
       type: object
       properties:
