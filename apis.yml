@@ -239,6 +239,12 @@ apis:
   - type: GraphQL
     url: graphql/riot-games-graphql.md
 common:
+- type: Plans
+  url: plans/riot-games-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/riot-games-rate-limits.yml
+- type: FinOps
+  url: finops/riot-games-finops.yml
 - url: https://www.riotgames.com/en/news
   type: Blog
 - type: AgenticAccess
