@@ -110,21 +110,6 @@ paths:
                 $ref: '#/components/schemas/LeagueListDTO'
 components:
   schemas:
-    LeagueListDTO:
-      type: object
-      properties:
-        leagueId:
-          type: string
-        entries:
-          type: array
-          items:
-            $ref: '#/components/schemas/LeagueEntryDTO'
-        tier:
-          type: string
-        name:
-          type: string
-        queue:
-          type: string
     LeagueEntryDTO:
       type: object
       properties:
@@ -154,6 +139,21 @@ components:
           type: boolean
         inactive:
           type: boolean
+    LeagueListDTO:
+      type: object
+      properties:
+        leagueId:
+          type: string
+        entries:
+          type: array
+          items:
+            $ref: '#/components/schemas/LeagueEntryDTO'
+        tier:
+          type: string
+        name:
+          type: string
+        queue:
+          type: string
   securitySchemes:
     ApiKey:
       type: apiKey
