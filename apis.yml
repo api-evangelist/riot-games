@@ -239,6 +239,8 @@ apis:
   - type: GraphQL
     url: graphql/riot-games-graphql.md
 common:
+- type: PostmanWorkspace
+  url: https://www.postman.com/kinlaneapi/riot-games/overview
 - type: Plans
   url: plans/riot-games-plans-pricing.yml
 - type: RateLimits
