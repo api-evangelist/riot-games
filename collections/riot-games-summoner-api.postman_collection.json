@@ -1,690 +1,770 @@
 {
+  "info": {
+    "_postman_id": "bfee3d81-41a0-4df0-ab26-0e41baaab2a8",
+    "name": "Riot Games League of Legends Summoner API",
+    "description": "The Riot Games Developer API provides access to League of Legends game data including summoner profiles, champion mastery, ranked standings, match history, live spectator data, and tournament management. API keys are obtained through the Riot Developer Portal.\n\nContact Support:\n Name: Riot Developer Portal",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T03:14:22.000Z",
+    "updatedAt": "2026-10-22T03:14:22.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-bfee3d81-41a0-4df0-ab26-0e41baaab2a8"
+  },
   "item": [
     {
-      "id": "30022d07-cdf4-42b2-b0d3-4355f0ce970a",
-      "name": "Summoner",
-      "description": {
-        "content": "Summoner profile operations",
-        "type": "text/plain"
-      },
+      "name": "lol",
       "item": [
         {
-          "id": "6af98f45-4afa-42ea-90a0-3c0177622256",
-          "name": "Get Summoner By Name",
-          "request": {
-            "name": "Get Summoner By Name",
-            "description": {
-              "content": "Get a summoner by summoner name. Deprecated - use Riot ID instead.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "lol",
-                "summoner",
-                "v4",
-                "summoners",
-                "by-name",
-                ":summonerName"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "summonerName",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "apikey",
-              "apikey": [
-                {
-                  "key": "key",
-                  "value": "X-Riot-Token"
-                },
-                {
-                  "key": "value",
-                  "value": "{{apiKey}}"
-                },
-                {
-                  "key": "in",
-                  "value": "header"
-                }
-              ]
-            }
-          },
-          "response": [
+          "name": "summoner",
+          "item": [
             {
-              "id": "2b1868c9-3cc7-4b1f-94e3-3176b2591afb",
-              "name": "Summoner data",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "lol",
-                    "summoner",
-                    "v4",
-                    "summoners",
-                    "by-name",
-                    ":summonerName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "summonerName",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Riot-Token",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "v4",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "summoners",
+                  "item": [
+                    {
+                      "name": "by-name",
+                      "item": [
+                        {
+                          "name": "{summonerName}",
+                          "item": [
+                            {
+                              "name": "Get Summoner By Name",
+                              "id": "01759505-ea9c-443f-85aa-8d4134fe67ce",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "auth": {
+                                  "type": "apikey",
+                                  "apikey": [
+                                    {
+                                      "key": "key",
+                                      "value": "X-Riot-Token",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "value",
+                                      "value": "{{apiKey}}",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "in",
+                                      "value": "header",
+                                      "type": "string"
+                                    }
+                                  ]
+                                },
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/lol/summoner/v4/summoners/by-name/:summonerName",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "lol",
+                                    "summoner",
+                                    "v4",
+                                    "summoners",
+                                    "by-name",
+                                    ":summonerName"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "7394218c-56e4-45a9-bfd8-96ea176e920d",
+                                      "key": "summonerName",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                },
+                                "description": "Get a summoner by summoner name. Deprecated - use Riot ID instead."
+                              },
+                              "response": [
+                                {
+                                  "id": "42cabec6-8d11-4120-947c-895eae51bc87",
+                                  "name": "Summoner data",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "X-Riot-Token",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/lol/summoner/v4/summoners/by-name/:summonerName",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "lol",
+                                        "summoner",
+                                        "v4",
+                                        "summoners",
+                                        "by-name",
+                                        ":summonerName"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "summonerName"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"id\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"puuid\": \"<string>\",\n  \"name\": \"<string>\",\n  \"profileIconId\": \"<integer>\",\n  \"revisionDate\": \"<long>\",\n  \"summonerLevel\": \"<long>\"\n}",
+                                  "createdAt": "2026-10-22T03:14:22.000Z",
+                                  "updatedAt": "2026-10-22T03:14:22.000Z",
+                                  "uid": "35240-42cabec6-8d11-4120-947c-895eae51bc87"
+                                },
+                                {
+                                  "id": "4593a667-616d-428a-bdfb-feeb0c13f498",
+                                  "name": "Forbidden",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "X-Riot-Token",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/lol/summoner/v4/summoners/by-name/:summonerName",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "lol",
+                                        "summoner",
+                                        "v4",
+                                        "summoners",
+                                        "by-name",
+                                        ":summonerName"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "summonerName"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Forbidden",
+                                  "code": 403,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-10-22T03:14:22.000Z",
+                                  "updatedAt": "2026-10-22T03:14:22.000Z",
+                                  "uid": "35240-4593a667-616d-428a-bdfb-feeb0c13f498"
+                                },
+                                {
+                                  "id": "48f4ab6f-5d71-4a06-9e70-173ac02e0d81",
+                                  "name": "Not found",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "X-Riot-Token",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/lol/summoner/v4/summoners/by-name/:summonerName",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "lol",
+                                        "summoner",
+                                        "v4",
+                                        "summoners",
+                                        "by-name",
+                                        ":summonerName"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "summonerName"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "Not Found",
+                                  "code": 404,
+                                  "_postman_previewlanguage": "text",
+                                  "header": [],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": null,
+                                  "createdAt": "2026-10-22T03:14:22.000Z",
+                                  "updatedAt": "2026-10-22T03:14:22.000Z",
+                                  "uid": "35240-48f4ab6f-5d71-4a06-9e70-173ac02e0d81"
+                                }
+                              ],
+                              "createdAt": "2026-10-22T03:14:22.000Z",
+                              "updatedAt": "2026-10-22T03:14:22.000Z",
+                              "uid": "35240-01759505-ea9c-443f-85aa-8d4134fe67ce"
+                            }
+                          ],
+                          "id": "a1c8af71-0353-406c-b382-de034c10e147",
+                          "createdAt": "2026-10-22T03:14:22.000Z",
+                          "updatedAt": "2026-10-22T03:14:22.000Z",
+                          "uid": "35240-a1c8af71-0353-406c-b382-de034c10e147"
+                        }
+                      ],
+                      "id": "5277a1f7-b304-47bd-af68-67fc043a0e77",
+                      "createdAt": "2026-10-22T03:14:22.000Z",
+                      "updatedAt": "2026-10-22T03:14:22.000Z",
+                      "uid": "35240-5277a1f7-b304-47bd-af68-67fc043a0e77"
+                    },
+                    {
+                      "name": "by-puuid",
+                      "item": [
+                        {
+                          "name": "{encryptedPUUID}",
+                          "item": [
+                            {
+                              "name": "Get Summoner By PUUID",
+                              "id": "2a0bf6bd-de7b-4470-a39b-6857172b7fd5",
+                              "protocolProfileBehavior": {
+                                "disableBodyPruning": true
+                              },
+                              "request": {
+                                "auth": {
+                                  "type": "apikey",
+                                  "apikey": [
+                                    {
+                                      "key": "key",
+                                      "value": "X-Riot-Token",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "value",
+                                      "value": "{{apiKey}}",
+                                      "type": "string"
+                                    },
+                                    {
+                                      "key": "in",
+                                      "value": "header",
+                                      "type": "string"
+                                    }
+                                  ]
+                                },
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/lol/summoner/v4/summoners/by-puuid/:encryptedPUUID",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "lol",
+                                    "summoner",
+                                    "v4",
+                                    "summoners",
+                                    "by-puuid",
+                                    ":encryptedPUUID"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "id": "f4c69322-aed0-42dc-b1e4-b360fcd9dd2a",
+                                      "key": "encryptedPUUID",
+                                      "value": "<string>",
+                                      "description": "(Required) "
+                                    }
+                                  ]
+                                },
+                                "description": "Get a summoner by PUUID."
+                              },
+                              "response": [
+                                {
+                                  "id": "a97bf642-f757-473a-ae3b-f049e320bb92",
+                                  "name": "Summoner data",
+                                  "originalRequest": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      },
+                                      {
+                                        "description": "Added as a part of security scheme: apikey",
+                                        "key": "X-Riot-Token",
+                                        "value": "<API Key>"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/lol/summoner/v4/summoners/by-puuid/:encryptedPUUID",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "lol",
+                                        "summoner",
+                                        "v4",
+                                        "summoners",
+                                        "by-puuid",
+                                        ":encryptedPUUID"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "key": "encryptedPUUID"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "status": "OK",
+                                  "code": 200,
+                                  "_postman_previewlanguage": "json",
+                                  "header": [
+                                    {
+                                      "key": "Content-Type",
+                                      "value": "application/json"
+                                    }
+                                  ],
+                                  "cookie": [],
+                                  "responseTime": null,
+                                  "body": "{\n  \"id\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"puuid\": \"<string>\",\n  \"name\": \"<string>\",\n  \"profileIconId\": \"<integer>\",\n  \"revisionDate\": \"<long>\",\n  \"summonerLevel\": \"<long>\"\n}",
+                                  "createdAt": "2026-10-22T03:14:22.000Z",
+                                  "updatedAt": "2026-10-22T03:14:22.000Z",
+                                  "uid": "35240-a97bf642-f757-473a-ae3b-f049e320bb92"
+                                }
+                              ],
+                              "createdAt": "2026-10-22T03:14:22.000Z",
+                              "updatedAt": "2026-10-22T03:14:22.000Z",
+                              "uid": "35240-2a0bf6bd-de7b-4470-a39b-6857172b7fd5"
+                            }
+                          ],
+                          "id": "d7483070-f505-43df-9483-405fda25d6dd",
+                          "createdAt": "2026-10-22T03:14:22.000Z",
+                          "updatedAt": "2026-10-22T03:14:22.000Z",
+                          "uid": "35240-d7483070-f505-43df-9483-405fda25d6dd"
+                        }
+                      ],
+                      "id": "469a6add-22f3-499b-8677-2ed716d3ab0f",
+                      "createdAt": "2026-10-22T03:14:22.000Z",
+                      "updatedAt": "2026-10-22T03:14:22.000Z",
+                      "uid": "35240-469a6add-22f3-499b-8677-2ed716d3ab0f"
+                    },
+                    {
+                      "name": "{encryptedSummonerId}",
+                      "item": [
+                        {
+                          "name": "Get Summoner By ID",
+                          "id": "a97b2db6-ba4b-424e-aa25-caca962917ed",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "auth": {
+                              "type": "apikey",
+                              "apikey": [
+                                {
+                                  "key": "key",
+                                  "value": "X-Riot-Token",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "value",
+                                  "value": "{{apiKey}}",
+                                  "type": "string"
+                                },
+                                {
+                                  "key": "in",
+                                  "value": "header",
+                                  "type": "string"
+                                }
+                              ]
+                            },
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/lol/summoner/v4/summoners/:encryptedSummonerId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "lol",
+                                "summoner",
+                                "v4",
+                                "summoners",
+                                ":encryptedSummonerId"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "bd05d16a-981b-4942-b33b-21af4f4e0070",
+                                  "key": "encryptedSummonerId",
+                                  "value": "<string>",
+                                  "description": "(Required) "
+                                }
+                              ]
+                            },
+                            "description": "Get a summoner by encrypted summoner ID."
+                          },
+                          "response": [
+                            {
+                              "id": "d15459f2-5077-480a-95a2-7fae5283d853",
+                              "name": "Summoner data",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  },
+                                  {
+                                    "description": "Added as a part of security scheme: apikey",
+                                    "key": "X-Riot-Token",
+                                    "value": "<API Key>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/lol/summoner/v4/summoners/:encryptedSummonerId",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "lol",
+                                    "summoner",
+                                    "v4",
+                                    "summoners",
+                                    ":encryptedSummonerId"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "encryptedSummonerId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "{\n  \"id\": \"<string>\",\n  \"accountId\": \"<string>\",\n  \"puuid\": \"<string>\",\n  \"name\": \"<string>\",\n  \"profileIconId\": \"<integer>\",\n  \"revisionDate\": \"<long>\",\n  \"summonerLevel\": \"<long>\"\n}",
+                              "createdAt": "2026-10-22T03:14:22.000Z",
+                              "updatedAt": "2026-10-22T03:14:22.000Z",
+                              "uid": "35240-d15459f2-5077-480a-95a2-7fae5283d853"
+                            }
+                          ],
+                          "createdAt": "2026-10-22T03:14:22.000Z",
+                          "updatedAt": "2026-10-22T03:14:22.000Z",
+                          "uid": "35240-a97b2db6-ba4b-424e-aa25-caca962917ed"
+                        }
+                      ],
+                      "id": "4b177c3c-beec-4cde-86ea-d4a3dce4ac8e",
+                      "createdAt": "2026-10-22T03:14:22.000Z",
+                      "updatedAt": "2026-10-22T03:14:22.000Z",
+                      "uid": "35240-4b177c3c-beec-4cde-86ea-d4a3dce4ac8e"
+                    }
+                  ],
+                  "id": "9f5b74ae-3711-410f-90b7-c309776869e3",
+                  "createdAt": "2026-10-22T03:14:22.000Z",
+                  "updatedAt": "2026-10-22T03:14:22.000Z",
+                  "uid": "35240-9f5b74ae-3711-410f-90b7-c309776869e3"
                 }
               ],
-              "body": "{\n  \"id\": \"string\",\n  \"accountId\": \"string\",\n  \"puuid\": \"string\",\n  \"name\": \"string\",\n  \"profileIconId\": 8236,\n  \"revisionDate\": 7968,\n  \"summonerLevel\": 2969\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "c9e0f384-93c1-46c6-b781-03bd3a5744bc",
-              "name": "Forbidden",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "lol",
-                    "summoner",
-                    "v4",
-                    "summoners",
-                    "by-name",
-                    ":summonerName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "summonerName",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Riot-Token",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Forbidden",
-              "code": 403,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "cb25a5a3-1e3e-4491-9e55-13f9b8763440",
-              "name": "Not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "lol",
-                    "summoner",
-                    "v4",
-                    "summoners",
-                    "by-name",
-                    ":summonerName"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "summonerName",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Riot-Token",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "id": "d1322fa0-a32d-42b3-8c2a-fb9a49eef659",
+              "createdAt": "2026-10-22T03:14:22.000Z",
+              "updatedAt": "2026-10-22T03:14:22.000Z",
+              "uid": "35240-d1322fa0-a32d-42b3-8c2a-fb9a49eef659"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "db2688c7-05b6-493a-98f6-b5ac82373c9b",
-          "name": "Get Summoner By PUUID",
-          "request": {
-            "name": "Get Summoner By PUUID",
-            "description": {
-              "content": "Get a summoner by PUUID.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "lol",
-                "summoner",
-                "v4",
-                "summoners",
-                "by-puuid",
-                ":encryptedPUUID"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "encryptedPUUID",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "apikey",
-              "apikey": [
-                {
-                  "key": "key",
-                  "value": "X-Riot-Token"
-                },
-                {
-                  "key": "value",
-                  "value": "{{apiKey}}"
-                },
-                {
-                  "key": "in",
-                  "value": "header"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "69c07bb4-2944-4f1a-8b1b-c666c9aa9889",
-              "name": "Summoner data",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "lol",
-                    "summoner",
-                    "v4",
-                    "summoners",
-                    "by-puuid",
-                    ":encryptedPUUID"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "encryptedPUUID",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Riot-Token",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"string\",\n  \"accountId\": \"string\",\n  \"puuid\": \"string\",\n  \"name\": \"string\",\n  \"profileIconId\": 8236,\n  \"revisionDate\": 7968,\n  \"summonerLevel\": 2969\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "7163095c-8008-42aa-96d6-e677c483001c",
-          "name": "Get Summoner By ID",
-          "request": {
-            "name": "Get Summoner By ID",
-            "description": {
-              "content": "Get a summoner by encrypted summoner ID.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "lol",
-                "summoner",
-                "v4",
-                "summoners",
-                ":encryptedSummonerId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "encryptedSummonerId",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "apikey",
-              "apikey": [
-                {
-                  "key": "key",
-                  "value": "X-Riot-Token"
-                },
-                {
-                  "key": "value",
-                  "value": "{{apiKey}}"
-                },
-                {
-                  "key": "in",
-                  "value": "header"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "061b100d-1613-4d38-8a84-82dab5b59ebc",
-              "name": "Summoner data",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "lol",
-                    "summoner",
-                    "v4",
-                    "summoners",
-                    ":encryptedSummonerId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "encryptedSummonerId",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Riot-Token",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": \"string\",\n  \"accountId\": \"string\",\n  \"puuid\": \"string\",\n  \"name\": \"string\",\n  \"profileIconId\": 8236,\n  \"revisionDate\": 7968,\n  \"summonerLevel\": 2969\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "1930c3b1-99e6-4f97-9397-b130376bd933",
-          "name": "Get Account By Riot ID",
-          "request": {
-            "name": "Get Account By Riot ID",
-            "description": {
-              "content": "Get account by Riot ID (gameName + tagLine). Returns PUUID for use in other APIs.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "riot",
-                "account",
-                "v1",
-                "accounts",
-                "by-riot-id",
-                ":gameName",
-                ":tagLine"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "gameName",
-                  "description": "(Required) "
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "tagLine",
-                  "description": "(Required) "
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": {
-              "type": "apikey",
-              "apikey": [
-                {
-                  "key": "key",
-                  "value": "X-Riot-Token"
-                },
-                {
-                  "key": "value",
-                  "value": "{{apiKey}}"
-                },
-                {
-                  "key": "in",
-                  "value": "header"
-                }
-              ]
-            }
-          },
-          "response": [
-            {
-              "id": "692c1e28-7004-4e90-b920-7f549fb1f9da",
-              "name": "Account data",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "riot",
-                    "account",
-                    "v1",
-                    "accounts",
-                    "by-riot-id",
-                    ":gameName",
-                    ":tagLine"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "gameName",
-                      "description": "(Required) "
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "tagLine",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Riot-Token",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"puuid\": \"string\",\n  \"gameName\": \"string\",\n  \"tagLine\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "ad4aca9c-5b8b-40c6-93f1-3f6c0311cc48",
-              "name": "Account not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "riot",
-                    "account",
-                    "v1",
-                    "accounts",
-                    "by-riot-id",
-                    ":gameName",
-                    ":tagLine"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "gameName",
-                      "description": "(Required) "
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "tagLine",
-                      "description": "(Required) "
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-Riot-Token",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "b310619b-918e-4cd7-bff8-2af176bec964",
+          "createdAt": "2026-10-22T03:14:22.000Z",
+          "updatedAt": "2026-10-22T03:14:22.000Z",
+          "uid": "35240-b310619b-918e-4cd7-bff8-2af176bec964"
         }
       ],
-      "event": []
+      "id": "7d72464a-0677-46fa-88d9-7cb4cbafde2d",
+      "createdAt": "2026-10-22T03:14:22.000Z",
+      "updatedAt": "2026-10-22T03:14:22.000Z",
+      "uid": "35240-7d72464a-0677-46fa-88d9-7cb4cbafde2d"
+    },
+    {
+      "name": "riot",
+      "item": [
+        {
+          "name": "account",
+          "item": [
+            {
+              "name": "v1",
+              "item": [
+                {
+                  "name": "accounts",
+                  "item": [
+                    {
+                      "name": "by-riot-id",
+                      "item": [
+                        {
+                          "name": "{gameName}",
+                          "item": [
+                            {
+                              "name": "{tagLine}",
+                              "item": [
+                                {
+                                  "name": "Get Account By Riot ID",
+                                  "id": "cf5377b6-9165-4132-8cb3-7edc034a907e",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "auth": {
+                                      "type": "apikey",
+                                      "apikey": [
+                                        {
+                                          "key": "key",
+                                          "value": "X-Riot-Token",
+                                          "type": "string"
+                                        },
+                                        {
+                                          "key": "value",
+                                          "value": "{{apiKey}}",
+                                          "type": "string"
+                                        },
+                                        {
+                                          "key": "in",
+                                          "value": "header",
+                                          "type": "string"
+                                        }
+                                      ]
+                                    },
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/riot/account/v1/accounts/by-riot-id/:gameName/:tagLine",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "riot",
+                                        "account",
+                                        "v1",
+                                        "accounts",
+                                        "by-riot-id",
+                                        ":gameName",
+                                        ":tagLine"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "92228331-6a0b-423e-9341-6da18fe2676c",
+                                          "key": "gameName",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        },
+                                        {
+                                          "id": "c2342b46-e305-4f31-b48c-b41cdd0de4ea",
+                                          "key": "tagLine",
+                                          "value": "<string>",
+                                          "description": "(Required) "
+                                        }
+                                      ]
+                                    },
+                                    "description": "Get account by Riot ID (gameName + tagLine). Returns PUUID for use in other APIs."
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "b77d9e4b-6b26-4c2b-8b63-6d5af367102c",
+                                      "name": "Account data",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          },
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "X-Riot-Token",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/riot/account/v1/accounts/by-riot-id/:gameName/:tagLine",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "riot",
+                                            "account",
+                                            "v1",
+                                            "accounts",
+                                            "by-riot-id",
+                                            ":gameName",
+                                            ":tagLine"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "gameName"
+                                            },
+                                            {
+                                              "key": "tagLine"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "{\n  \"puuid\": \"<string>\",\n  \"gameName\": \"<string>\",\n  \"tagLine\": \"<string>\"\n}",
+                                      "createdAt": "2026-10-22T03:14:22.000Z",
+                                      "updatedAt": "2026-10-22T03:14:22.000Z",
+                                      "uid": "35240-b77d9e4b-6b26-4c2b-8b63-6d5af367102c"
+                                    },
+                                    {
+                                      "id": "c702a817-e622-405f-ab82-e965e6708fd6",
+                                      "name": "Account not found",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "description": "Added as a part of security scheme: apikey",
+                                            "key": "X-Riot-Token",
+                                            "value": "<API Key>"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/riot/account/v1/accounts/by-riot-id/:gameName/:tagLine",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "riot",
+                                            "account",
+                                            "v1",
+                                            "accounts",
+                                            "by-riot-id",
+                                            ":gameName",
+                                            ":tagLine"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "gameName"
+                                            },
+                                            {
+                                              "key": "tagLine"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Not Found",
+                                      "code": 404,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-10-22T03:14:22.000Z",
+                                      "updatedAt": "2026-10-22T03:14:22.000Z",
+                                      "uid": "35240-c702a817-e622-405f-ab82-e965e6708fd6"
+                                    }
+                                  ],
+                                  "createdAt": "2026-10-22T03:14:22.000Z",
+                                  "updatedAt": "2026-10-22T03:14:22.000Z",
+                                  "uid": "35240-cf5377b6-9165-4132-8cb3-7edc034a907e"
+                                }
+                              ],
+                              "id": "bca6b1a3-d7e9-4bec-be93-dbea37d17b0f",
+                              "createdAt": "2026-10-22T03:14:22.000Z",
+                              "updatedAt": "2026-10-22T03:14:22.000Z",
+                              "uid": "35240-bca6b1a3-d7e9-4bec-be93-dbea37d17b0f"
+                            }
+                          ],
+                          "id": "ec6029b5-a8e9-4a78-add0-4fcc7dedbf56",
+                          "createdAt": "2026-10-22T03:14:22.000Z",
+                          "updatedAt": "2026-10-22T03:14:22.000Z",
+                          "uid": "35240-ec6029b5-a8e9-4a78-add0-4fcc7dedbf56"
+                        }
+                      ],
+                      "id": "9b2a730b-b5f4-47f4-81d1-e9b91236bb05",
+                      "createdAt": "2026-10-22T03:14:22.000Z",
+                      "updatedAt": "2026-10-22T03:14:22.000Z",
+                      "uid": "35240-9b2a730b-b5f4-47f4-81d1-e9b91236bb05"
+                    }
+                  ],
+                  "id": "baadce95-c0fa-42e0-9854-18d5a2ace601",
+                  "createdAt": "2026-10-22T03:14:22.000Z",
+                  "updatedAt": "2026-10-22T03:14:22.000Z",
+                  "uid": "35240-baadce95-c0fa-42e0-9854-18d5a2ace601"
+                }
+              ],
+              "id": "b016a30f-5f35-4400-b0ca-a27a0ee4a2dd",
+              "createdAt": "2026-10-22T03:14:22.000Z",
+              "updatedAt": "2026-10-22T03:14:22.000Z",
+              "uid": "35240-b016a30f-5f35-4400-b0ca-a27a0ee4a2dd"
+            }
+          ],
+          "id": "c05de42e-dae6-4bf3-a27d-00e0344f1ab7",
+          "createdAt": "2026-10-22T03:14:22.000Z",
+          "updatedAt": "2026-10-22T03:14:22.000Z",
+          "uid": "35240-c05de42e-dae6-4bf3-a27d-00e0344f1ab7"
+        }
+      ],
+      "id": "0409d62d-20b7-4d6c-b48c-d2b125535174",
+      "createdAt": "2026-10-22T03:14:22.000Z",
+      "updatedAt": "2026-10-22T03:14:22.000Z",
+      "uid": "35240-0409d62d-20b7-4d6c-b48c-d2b125535174"
     }
   ],
-  "event": [],
   "variable": [
     {
-      "type": "string",
-      "value": "https://na1.api.riotgames.com",
-      "key": "baseUrl"
+      "key": "baseUrl",
+      "value": "https://na1.api.riotgames.com"
     }
-  ],
-  "info": {
-    "_postman_id": "ea1042ac-5d55-4e07-bd48-e923fe781966",
-    "name": "Riot Games League of Legends Champion Summoner API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Riot Games Developer API provides access to League of Legends game data including summoner profiles, champion mastery, ranked standings, match history, live spectator data, and tournament management. API keys are obtained through the Riot Developer Portal.\n\nContact Support:\n Name: Riot Developer Portal",
-      "type": "text/plain"
-    }
-  }
+  ]
 }
