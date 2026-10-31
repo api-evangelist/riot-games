@@ -1,4 +1,4 @@
-# Riot Games (riot-games)
+# Riot Games
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,171 +66,197 @@
 
 Riot Games provides a comprehensive developer platform for accessing game data across League of Legends, VALORANT, Teamfight Tactics, Legends of Runeterra, and other titles. The Riot Developer Portal offers REST APIs for match history, ranked standings, champion mastery, live spectator data, tournament management, and player account data.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/riot-games/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/riot-games/refs/heads/main/apis.yml)
+**Areas:** Esports · Gaming · League of Legends · Legends of Runeterra · Teamfight Tactics · VALORANT · Video Games
 
-## Scope
+## Riot Games on APIs.io
 
-- **Type:** Index
+Everything profiled for Riot Games is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/riot-games/](https://apis.io/providers/riot-games/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (13)
 
-- Esports
-- Gaming
-- League of Legends
-- Legends of Runeterra
-- Teamfight Tactics
-- VALORANT
+- [VALORANT API](https://apis.io/apis/riot-games/valorant-api/) — API for accessing VALORANT game data including match history, ranked standings, content catalog, and status information. Covers both PC and console platforms.
+- [Teamfight Tactics API](https://apis.io/apis/riot-games/teamfight-tactics-api/) — API for accessing Teamfight Tactics game data including match history, ranked standings, summoner profiles, and live spectator data for the auto battler…
+- [Legends of Runeterra API](https://apis.io/apis/riot-games/legends-of-runeterra-api/) — API for accessing Legends of Runeterra game data including player decks, inventory, match history, and ranked standings. Requires Riot Sign-On (RSO)…
+- [Riot Account API](https://apis.io/apis/riot-games/account-api/) — Cross-game account API for resolving Riot IDs (gameName + tagLine) to PUUIDs used across all Riot Games APIs. Supports account linking through Riot Sign-On…
+- [Riot Data Dragon](https://apis.io/apis/riot-games/data-dragon/) — Static data and asset delivery service for Riot Games. Provides localized game data for champions, items, summoner spells, runes, profile icons, and maps in…
+- [Riot Games Champion API](https://apis.io/apis/riot-games/riot-games-champion-api/) — Free champion rotation
+- [Riot Games Champion Mastery API](https://apis.io/apis/riot-games/riot-games-champion-mastery-api/) — Champion mastery data
+- [Riot Games Clash API](https://apis.io/apis/riot-games/riot-games-clash-api/) — Clash tournament operations
+- [Riot Games League API](https://apis.io/apis/riot-games/riot-games-league-api/) — Ranked league standings
+- [Riot Games Match API](https://apis.io/apis/riot-games/riot-games-match-api/) — Match history and details
+- [Riot Games Spectator API](https://apis.io/apis/riot-games/riot-games-spectator-api/) — Live game spectator data
+- [Riot Games Status API](https://apis.io/apis/riot-games/riot-games-status-api/) — Platform status
+- [Riot Games Summoner API](https://apis.io/apis/riot-games/riot-games-summoner-api/) — Summoner profile operations
 
-## Timestamps
+### Published properties
 
-- **Created:** 2025-02-08
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### GraphQL (1)
 
-### League of Legends API
+GraphQL schemas.
 
-API for accessing League of Legends game data including champion mastery, clash tournaments, ranked league standings, match history, live spectator data, summoner profiles, and tournament management. All APIs are currently version 4 or 5.
+- [Riot Games GraphQL Schema](https://apis.io/graphqls/riot-games/riot-games-graphql/)
 
-- **Human URL:** [https://developer.riotgames.com/apis](https://developer.riotgames.com/apis)
-- **Base URL:** `https://na1.api.riotgames.com`
+#### Agentic access (1)
 
-#### Tags
+Which operations an agent can call, which act, and which need a human in the loop.
 
-- Champion Mastery
-- Clash
-- League of Legends
-- Match History
-- Ranked
-- Summoner
-- Tournaments
+- [Riot Games Agentic Access](https://apis.io/agentic-access/riot-games/riot-games-agentic-access/)
 
-#### Properties
+#### JSON Schema (16)
 
-- [Documentation](https://developer.riotgames.com/apis)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/riot-games/refs/heads/main/openapi/riot-games-league-of-legends-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/riot-games-league-of-legends.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/riot-games-league-of-legends.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+The data models the API reads and writes.
 
-### VALORANT API
+- [AccountDTO](https://apis.io/schemas/riot-games/riot-games-accountdto/)
+- [ChampionInfoDTO](https://apis.io/schemas/riot-games/riot-games-championinfodto/)
+- [ChampionMasteryDTO](https://apis.io/schemas/riot-games/riot-games-championmasterydto/)
+- [ClashPlayerDTO](https://apis.io/schemas/riot-games/riot-games-clashplayerdto/)
+- [CurrentGameInfoDTO](https://apis.io/schemas/riot-games/riot-games-currentgameinfodto/)
+- [CurrentGameParticipantDTO](https://apis.io/schemas/riot-games/riot-games-currentgameparticipantdto/)
+- [FeaturedGamesDTO](https://apis.io/schemas/riot-games/riot-games-featuredgamesdto/)
+- [LeagueEntryDTO](https://apis.io/schemas/riot-games/riot-games-leagueentrydto/)
+- [LeagueListDTO](https://apis.io/schemas/riot-games/riot-games-leaguelistdto/)
+- [Riot Games Match](https://apis.io/schemas/riot-games/riot-games-match/)
+- [MatchDTO](https://apis.io/schemas/riot-games/riot-games-matchdto/)
+- [MatchTimelineDTO](https://apis.io/schemas/riot-games/riot-games-matchtimelinedto/)
+- [ParticipantDTO](https://apis.io/schemas/riot-games/riot-games-participantdto/)
+- [PlatformDataDTO](https://apis.io/schemas/riot-games/riot-games-platformdatadto/)
+- [Riot Games Summoner](https://apis.io/schemas/riot-games/riot-games-summoner/)
+- [SummonerDTO](https://apis.io/schemas/riot-games/riot-games-summonerdto/)
 
-API for accessing VALORANT game data including match history, ranked standings, content catalog, and status information. Covers both PC and console platforms.
+#### JSON Structure (2)
 
-- **Human URL:** [https://developer.riotgames.com/apis](https://developer.riotgames.com/apis)
-- **Base URL:** `https://na.api.riotgames.com`
+Data models expressed in JSON Structure.
 
-#### Tags
+- [Riot Games Match Structure](https://apis.io/json-structure/riot-games/riot-games-match-structure/)
+- [Riot Games Structure](https://apis.io/json-structure/riot-games/riot-games-structure/)
 
-- Console
-- Match History
-- Ranked
-- VALORANT
+#### JSON-LD (1)
 
-#### Properties
+Linked-data contexts for the provider's vocabulary.
 
-- [Documentation](https://developer.riotgames.com/docs/valorant)
-- [Postman Collection](collections/riot-games-league-of-legends.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/riot-games-league-of-legends.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Riot Games Context](https://apis.io/jsonld/riot-games/riot-games-context/)
 
-### Teamfight Tactics API
+#### Vocabulary (1)
 
-API for accessing Teamfight Tactics game data including match history, ranked standings, summoner profiles, and live spectator data for the auto battler game mode.
+The provider's domain terms, defined.
 
-- **Human URL:** [https://developer.riotgames.com/apis](https://developer.riotgames.com/apis)
-- **Base URL:** `https://na1.api.riotgames.com`
+- [Riot Games Vocabulary](https://apis.io/vocabularies/riot-games/riot-games-vocabulary/)
 
-#### Tags
+#### Examples (2)
 
-- Match History
-- Ranked
-- Summoner
-- Teamfight Tactics
+Example requests and responses.
 
-#### Properties
+- [Riot Games Get Match Example](https://apis.io/examples/riot-games/riot-games-get-match-example/)
+- [Riot Games Get Summoner Example](https://apis.io/examples/riot-games/riot-games-get-summoner-example/)
 
-- [Documentation](https://developer.riotgames.com/apis)
-- [Postman Collection](collections/riot-games-league-of-legends.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/riot-games-league-of-legends.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Collections (9)
 
-### Legends of Runeterra API
+Postman and Open Collection request collections.
 
-API for accessing Legends of Runeterra game data including player decks, inventory, match history, and ranked standings. Requires Riot Sign-On (RSO) authentication for player-specific data.
+- [Riot Games League of Legends Champion API](https://apis.io/collections/riot-games/open-riot-games-champion-api/)
+- [Riot Games League of Legends Champion Champion Mastery API](https://apis.io/collections/riot-games/open-riot-games-champion-mastery-api/)
+- [Riot Games League of Legends Champion Clash API](https://apis.io/collections/riot-games/open-riot-games-clash-api/)
+- [Riot Games of Legends Champion League API](https://apis.io/collections/riot-games/open-riot-games-league-api/)
+- [Riot Games League of Legends API](https://apis.io/collections/riot-games/open-riot-games-league-of-legends/)
+- [Riot Games League of Legends Champion Match API](https://apis.io/collections/riot-games/open-riot-games-match-api/)
+- [Riot Games League of Legends Champion Spectator API](https://apis.io/collections/riot-games/open-riot-games-spectator-api/)
+- [Riot Games League of Legends Champion Status API](https://apis.io/collections/riot-games/open-riot-games-status-api/)
+- [Riot Games League of Legends Champion Summoner API](https://apis.io/collections/riot-games/open-riot-games-summoner-api/)
 
-- **Human URL:** [https://developer.riotgames.com/apis](https://developer.riotgames.com/apis)
-- **Base URL:** `https://americas.api.riotgames.com`
+#### Governance rules (2)
 
-#### Tags
+Spectral rulesets for the provider's contracts.
 
-- Decks
-- Legends of Runeterra
-- Match History
-- Ranked
+- [Riot Games — jsonschema rules](https://apis.io/rules/riot-games/riot-games-jsonschema-spectral-rules/)
+- [Riot Games API Rules](https://apis.io/rules/riot-games/riot-games-rules/)
 
-#### Properties
+#### Security (3)
 
-- [Documentation](https://developer.riotgames.com/docs/lor)
-- [Postman Collection](collections/riot-games-league-of-legends.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/riot-games-league-of-legends.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Authentication, trust centre, and vulnerability disclosure.
 
-### Riot Account API
+- [Riot Games Authentication](https://apis.io/security/riot-games/riot-games-authentication/)
+- [Riot Games Domain Security](https://apis.io/security/riot-games/riot-games-domain-security/)
+- [Riot Games Vulnerability Disclosure](https://apis.io/security/riot-games/riot-games-vulnerability-disclosure/)
 
-Cross-game account API for resolving Riot IDs (gameName + tagLine) to PUUIDs used across all Riot Games APIs. Supports account linking through Riot Sign-On (RSO) OAuth 2.0 authentication.
+#### Plans and pricing (1)
 
-- **Human URL:** [https://developer.riotgames.com/apis](https://developer.riotgames.com/apis)
-- **Base URL:** `https://americas.api.riotgames.com`
+Published plans, tiers and prices.
 
-#### Tags
+- [Riot Games Plans Pricing](https://apis.io/plans/riot-games/riot-games-plans-pricing/)
 
-- Account
-- Authentication
-- Identity
-- PUUID
+#### Rate limits (1)
 
-#### Properties
+Published request limits.
 
-- [Documentation](https://developer.riotgames.com/apis)
-- [Postman Collection](collections/riot-games-league-of-legends.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/riot-games-league-of-legends.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Riot Games Rate Limits](https://apis.io/rate-limits/riot-games/riot-games-rate-limits/)
 
-### Riot Data Dragon
+#### FinOps (1)
 
-Static data and asset delivery service for Riot Games. Provides localized game data for champions, items, summoner spells, runes, profile icons, and maps in JSON format. Available in 28+ languages. Updated with each game patch.
+What the API costs to run, by operation.
 
-- **Human URL:** [https://developer.riotgames.com/docs/lol](https://developer.riotgames.com/docs/lol)
-- **Base URL:** `https://ddragon.leagueoflegends.com/cdn`
+- [Riot Games Finops](https://apis.io/finops/riot-games/riot-games-finops/)
 
-#### Tags
+## Where to find this API
 
-- Champions
-- Data Dragon
-- Items
-- Static Data
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-#### Properties
-
-- [Documentation](https://developer.riotgames.com/docs/lol)
-- [Postman Collection](collections/riot-games-league-of-legends.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/riot-games-league-of-legends.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [LinkedIn](https://www.linkedin.com/company/riot-games)
-- [Developer](https://developer.riotgames.com/)
-- [Documentation](https://developer.riotgames.com/apis)
-- [Authentication](https://developer.riotgames.com/docs/portal)
-- [Rate Limiting](https://developer.riotgames.com/docs/portal)
-- [Github Org](https://github.com/RiotGames)
-- [Sign Up](https://developer.riotgames.com/)
-- [Terms of Service](https://developer.riotgames.com/policies/general)
-- [Privacy Policy](https://www.riotgames.com/en/privacy-notice)
 - [Website](https://www.riotgames.com)
-- [Spectral Rules](https://raw.githubusercontent.com/api-evangelist/riot-games/refs/heads/main/rules/riot-games-rules.yml)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/riot-games/refs/heads/main/json-schema/riot-games-summoner-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/riot-games/refs/heads/main/json-schema/riot-games-match-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [J S O N L D Context](https://raw.githubusercontent.com/api-evangelist/riot-games/refs/heads/main/json-ld/riot-games-context.jsonld)
-- [Vocabulary](https://raw.githubusercontent.com/api-evangelist/riot-games/refs/heads/main/vocabulary/riot-games-vocabulary.yml)
+- [Documentation](https://developer.riotgames.com/apis)
+- [Blog](https://www.riotgames.com/en/news)
+- [Terms of service](https://developer.riotgames.com/policies/general)
+- [Privacy policy](https://www.riotgames.com/en/privacy-notice)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 38.1** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 56.7 |
+| Contract governance | 23.5 |
+| Operational transparency | 13.2 |
+| Developer ergonomics | 23.8 |
+| Access clarity | 31.6 |
+
+**Agent readiness 20.7** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | na |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 26.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/riot-games/](https://apis.io/providers/riot-games/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Riot Games: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/riot-games/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
